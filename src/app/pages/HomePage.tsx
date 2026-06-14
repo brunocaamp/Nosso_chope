@@ -1,5 +1,6 @@
 import { HeroSection } from "../components/sections/HeroSection";
 import { AboutSection } from "../components/sections/AboutSection";
+import { gridBase } from "../components/code/constants";
 import { CtaTagsSection } from "../components/sections/CtaTagsSection";
 import { PilsenSection } from "../components/sections/PilsenSection";
 import { SocialProofSection } from "../components/sections/SocialProofSection";

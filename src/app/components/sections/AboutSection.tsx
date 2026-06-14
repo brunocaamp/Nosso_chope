@@ -1,12 +1,13 @@
 import svgPaths from "../../../imports/HeroSobre/svg-4z82zqaibu";
 import imgRowImg21 from "figma:asset/09badca205a6c6d82552e03d3900a77bbbe54536.png";
 import { Button, WhatsAppAnimIcon } from "../shared/Button";
+import { gridBase } from "../code/constants";
 
 /* ─── Stars badge ──────────────────────────────────────────────────────── */
 
 function StarSvg() {
   return (
-    <div className="relative size-[25px]">
+    <div className="relative size-[1.5625rem]">
       <svg className="absolute block inset-0 size-full" fill="none" viewBox="0 0 25 25">
         <path d={svgPaths.p17169400} fill="black" />
       </svg>
@@ -17,11 +18,10 @@ function StarSvg() {
 function StarsBadge() {
   return (
     <div
-      className="flex items-center gap-[10px] px-[26px] py-[12px] rounded-[10px] overflow-hidden"
-      style={{ backgroundColor: "#ffbd24", width: "207.309px", height: "58.004px" }}
+      className="flex items-center gap-[0.625rem] px-[1.625rem] py-[0.75rem] rounded-[0.625rem] overflow-hidden bg-[#ffbd24] w-[12.9568rem] h-[3.62525rem]"
     >
       {[0, 1, 2, 3, 4].map((i) => (
-        <div key={i} style={{ transform: "rotate(-0.18deg) skewX(-0.29deg)" }}>
+        <div key={i} className="rotate-[-0.18deg] skew-x-[-0.29deg]">
           <StarSvg />
         </div>
       ))}
@@ -33,10 +33,8 @@ function StarsBadge() {
 
 function ImgBox() {
   return (
-    <div className="overflow-hidden relative rounded-[25px] shrink-0" style={{ width: "771px", height: "542px" }}>
-      <div className="absolute" style={{ left: "-55px", top: "-16px", width: "833px", height: "591px" }}>
-        <img alt="Nosso Chope" src={imgRowImg21} className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
-      </div>
+    <div className="col-[1_/_7] row-[1_/_-1] overflow-hidden relative rounded-[1.5625rem]">
+      <img alt="bridando com como do nosso chope" src={imgRowImg21} />
     </div>
   );
 }
@@ -45,11 +43,11 @@ function ImgBox() {
 
 function Heading() {
   return (
-    <div className="absolute whitespace-nowrap" style={{ height: "59.725px", width: "512px", top: "27.5px", left: 0 }}>
-      <p className="absolute font-['Montserrat',sans-serif] font-black" style={{ fontSize: "59.72px", lineHeight: "59.72px", color: "#171717", left: "-3px", top: "3.36px" }}>
+    <div className="absolute whitespace-nowrap h-[3.7328rem] w-[32rem] top-[1.71875rem] left-0">
+      <p className="absolute font-['Montserrat',sans-serif] font-black text-[3.7325rem] leading-[3.7325rem] text-[#171717] left-[-0.1875rem] top-[0.21rem]">
         NOSSO JEITO!
       </p>
-      <p className="absolute font-['Montserrat',sans-serif] font-black" style={{ fontSize: "59.72px", lineHeight: "59.72px", color: "#ffbd24", left: "-5px", top: "-0.64px" }}>
+      <p className="absolute font-['Montserrat',sans-serif] font-black text-[3.7325rem] leading-[3.7325rem] text-[#ffbd24] left-[-0.3125rem] top-[-0.04rem]">
         NOSSO JEITO!
       </p>
     </div>
@@ -58,13 +56,13 @@ function Heading() {
 
 function TextParagraph() {
   return (
-    <div className="absolute flex flex-col gap-[14px] items-start" style={{ top: "110.23px", left: 0, width: "512px" }}>
-      <p className="font-['Montserrat',sans-serif] font-normal text-[#4a3728] text-[16px] w-full">
-        <span style={{ fontWeight: 700, lineHeight: "27px" }}>Nosso Chope é puro malte, prático e fácil de encontrar.</span>
-        <span style={{ lineHeight: "27px" }}>{" "}Sem complicação, sem mistério. Só o prazer de abrir, servir e brindar. Nossa produção é feita com foco na qualidade e localmente em Angra dos Reis e Guapimirim. Você sabe exatamente a procedência do que está bebendo.</span>
+    <div className="absolute flex flex-col gap-[0.875rem] items-start top-[6.889375rem] left-0 w-[32rem]">
+      <p className="font-['Montserrat',sans-serif] font-normal text-[#4a3728] text-[1rem] w-full">
+        <span className="font-bold leading-[1.6875rem]">Nosso Chope é puro malte, prático e fácil de encontrar.</span>
+        <span className="leading-[1.6875rem]">{" "}Sem complicação, sem mistério. Só o prazer de abrir, servir e brindar. Nossa produção é feita com foco na qualidade e localmente em Angra dos Reis e Guapimirim. Você sabe exatamente a procedência do que está bebendo.</span>
       </p>
-      <p className="font-['Montserrat',sans-serif] font-normal text-[#4a3728] text-[16px] w-full" style={{ lineHeight: "27px" }}>
-        O Nosso Chope é feito para reunir amigos, família e aqueles momentos inesquecíveis. Leve, refrescante e com aquele sabor de chope gelado de boteco que todo mundo ama.
+      <p className="font-['Montserrat',sans-serif] font-normal text-[#4a3728] text-[1rem] w-full leading-[1.6875rem]">
+        O Nosso Chope é feito para reunir amigos, family e aqueles momentos inesquecíveis. Leve, refrescante e com aquele sabor de chope gelado de boteco que todo mundo ama.
       </p>
       <Button variant="whatsapp-yellow">
         <WhatsAppAnimIcon fill="black" />
@@ -76,8 +74,8 @@ function TextParagraph() {
 
 function TextBox() {
   return (
-    <div className="relative shrink-0" style={{ height: "392px", width: "569px" }}>
-      <p className="absolute font-['Montserrat',sans-serif] font-medium whitespace-nowrap text-[#1a0e04]" style={{ fontSize: "38px", lineHeight: "19.5px", top: "-7.4px", left: "-5px", letterSpacing: "1.56px" }}>
+    <div className="col-[8_/_-1] row-[1_/_-1] relative shrink-0 h-[24.5rem] w-[35.5625rem]">
+      <p className="absolute font-['Montserrat',sans-serif] font-medium whitespace-nowrap text-[#1a0e04] text-[2.375rem] leading-[1.21875rem] top-[-0.4625rem] left-[-0.3125rem] tracking-[0.0975rem]">
         Chope de verdade do
       </p>
       <Heading />
@@ -90,12 +88,10 @@ function TextBox() {
 
 export function AboutSection() {
   return (
-    <section className="relative flex items-center justify-center w-full shrink-0" style={{ paddingTop: "200px", paddingBottom: "150px", gap: "80px" }}>
+    <section className={`${gridBase} items-center justify-center w-full shrink-0 pt-[12.5rem] pb-[9.375rem]`}>
       <ImgBox />
-      <div className="absolute" style={{ left: "329px", top: "723px" }}>
-        <div style={{ transform: "rotate(2.93deg) skewX(0.29deg)" }}>
-          <StarsBadge />
-        </div>
+      <div className="col-[2_/_4] row-[1_/_-1] self-end relative bottom-[-1rem] rotate-[2.93deg] skew-x-[0.29deg]">
+        <StarsBadge />
       </div>
       <TextBox />
     </section>

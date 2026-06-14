@@ -8,13 +8,13 @@ import {
   PhoneFooterIcon,
 } from "../shared/icons";
 import { Button, WhatsAppAnimIcon, IconButton } from "../shared/Button";
+import { gridBase } from "../code/constants";
 
 function SocialHashtag() {
   return (
-    <div className="relative w-full flex flex-col items-center py-[3px]">
+    <div className="relative w-full flex flex-col items-center py-[0.1875rem]">
       <p
-        className="font-['Montserrat',sans-serif] font-extrabold text-white text-center uppercase tracking-[0.64px]"
-        style={{ fontSize: "clamp(4rem,6.04vw,7.25rem)", lineHeight: "1" }}
+        className="font-['Montserrat',sans-serif] font-extrabold text-white text-center uppercase tracking-[0.04rem] text-[clamp(4rem,6.04vw,7.25rem)] leading-none"
       >
         #étudonosso
       </p>
@@ -48,7 +48,7 @@ function SocialHashtag() {
 function Navigation() {
   const links = ["Início", "Produtos", "Nosso Jeito", "Red Draft", "Parceiros"];
   return (
-    <div className="flex flex-col gap-4 text-[#171717]" style={{ width: "252px" }}>
+    <div className="flex flex-col gap-4 text-[#171717] w-[15.75rem]">
       <p className="font-['Montserrat',sans-serif] font-bold text-[1rem] tracking-[1.54px] uppercase leading-[1]">
         NAVEGAÇÃO
       </p>
@@ -67,7 +67,7 @@ function LogoBlock() {
   return (
     <div className="flex flex-col gap-4 items-start">
       <LogoDarkSvg width={178} height={100} />
-      <p className="font-['Montserrat',sans-serif] font-normal text-[#171717] text-[1rem] leading-[1.46]" style={{ width: "191px" }}>
+      <p className="font-['Montserrat',sans-serif] font-normal text-[#171717] text-[1rem] leading-[1.46] w-[11.9375rem]">
         O puro malte que está conquistando o Brasil.
       </p>
     </div>
@@ -76,12 +76,12 @@ function LogoBlock() {
 
 function ContactInfo() {
   return (
-    <div className="flex flex-col gap-4 items-start" style={{ width: "226px" }}>
-      <p className="font-['Inter',sans-serif] font-bold text-[#171717] text-[1rem] tracking-[1.54px] uppercase leading-[1]">
+    <div className="flex flex-col gap-4 items-start w-[14.125rem]">
+      <p className="font-['Inter',sans-serif] font-bold text-[#171717] text-[1rem] tracking-[0.09625rem] uppercase leading-[1]">
         CONTATO
       </p>
       <div className="flex flex-col gap-3">
-        <div className="flex items-center gap-[21px]">
+        <div className="flex items-center gap-[1.3125rem]">
           <div className="flex-shrink-0" style={{ width: "13px", height: "13px", marginTop: "3px" }}>
             <PhoneFooterIcon stroke="#171717" size={13} />
           </div>
@@ -89,8 +89,8 @@ function ContactInfo() {
             (21) 9 9999-9999
           </p>
         </div>
-        <div className="flex items-center gap-[21px]">
-          <div className="flex-shrink-0" style={{ width: "13px", height: "13px", marginTop: "3px" }}>
+        <div className="flex items-center gap-[1.3125rem]">
+          <div className="flex-shrink-0 w-[0.8125rem] h-[0.8125rem] mt-[0.1875rem]">
             <EmailIcon stroke="#171717" size={13} />
           </div>
           <p className="font-['Montserrat',sans-serif] font-normal text-[#171717] text-[0.8125rem] whitespace-nowrap">
@@ -104,11 +104,11 @@ function ContactInfo() {
 
 function ReserveBlock() {
   return (
-    <div className="flex flex-col gap-4 items-start" style={{ width: "252px" }}>
-      <p className="font-['Montserrat',sans-serif] font-bold text-[#171717] text-[1rem] tracking-[1.54px] uppercase leading-[1]">
+    <div className="flex flex-col gap-4 items-start w-[15.75rem]">
+      <p className="font-['Montserrat',sans-serif] font-bold text-[#171717] text-[1rem] tracking-[0.09625rem] uppercase leading-[1]">
         GARANTA O SEU
       </p>
-      <p className="font-['Montserrat',sans-serif] font-normal text-[#171717] text-[1rem] leading-[1.46]" style={{ width: "195px" }}>
+      <p className="font-['Montserrat',sans-serif] font-normal text-[#171717] text-[1rem] leading-[1.46] w-[12.1875rem]">
         Faça sua pré-reserva
       </p>
       <Button variant="reserve-dark">
@@ -121,27 +121,27 @@ function ReserveBlock() {
 
 function FooterContent() {
   return (
-    <div className="relative flex flex-col gap-20 items-center w-full px-6 pt-[130px]">
+    <div className="relative flex flex-col gap-[5rem] items-center w-full px-[1.5rem] pt-[8.125rem]">
       {/* Social hashtag */}
       <SocialHashtag />
 
       {/* Main footer info */}
-      <div className="flex items-start justify-between w-full" style={{ maxWidth: "1540px" }}>
+      <div className="flex items-start justify-between w-full max-w-[96.25rem]">
         {/* Left: logo + nav */}
-        <div className="flex items-start gap-[100px]">
+        <div className="flex items-start gap-[6.25rem]">
           <LogoBlock />
           <Navigation />
         </div>
         {/* Right: contact + reserve */}
-        <div className="flex items-start gap-10">
+        <div className="flex items-start gap-[2.5rem]">
           <ContactInfo />
           <ReserveBlock />
         </div>
       </div>
 
       {/* Divider + copyright */}
-      <div className="flex flex-col gap-[30px] items-start w-full" style={{ maxWidth: "1540px", paddingTop: "24px" }}>
-        <div className="w-full h-[1px]" style={{ background: "rgba(255,255,255,0.5)" }} />
+      <div className="flex flex-col gap-[1.875rem] items-start w-full max-w-[96.25rem] pt-[1.5rem]">
+        <div className="w-full h-[1px] bg-white/50" />
         <div className="flex items-center justify-between w-full">
           <p className="font-['Montserrat',sans-serif] font-normal text-[#171717] text-[0.875rem] whitespace-nowrap">
             © 2024 Nosso Chope. Todos os direitos reservados.
@@ -154,15 +154,7 @@ function FooterContent() {
 
       {/* Decorative bottle in motion */}
       <div
-        className="absolute pointer-events-none"
-        style={{
-          left: "252px",
-          top: "69px",
-          width: "1107px",
-          height: "1360px",
-          transform: "rotate(-9.38deg)",
-          opacity: 0.85,
-        }}
+        className="absolute pointer-events-none left-[15.75rem] top-[4.3125rem] w-[69.1875rem] h-[85rem] rotate-[-9.38deg] opacity-85"
       >
         <img
           src={img473Ml02Movimento11}
@@ -177,11 +169,7 @@ function FooterContent() {
 export function FooterSection() {
   return (
     <footer
-      className="relative w-full overflow-hidden"
-      style={{
-        background: "linear-gradient(to bottom, #ffd324, #e9a402)",
-        minHeight: "875px",
-      }}
+      className="relative w-full overflow-hidden bg-gradient-to-b from-[#ffd324] to-[#e9a402] min-h-[54.6875rem]"
     >
       <FooterContent />
     </footer>

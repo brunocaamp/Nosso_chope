@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import svgPaths from "../../../imports/HeroSobre/svg-4z82zqaibu";
 import svgPathsApp from "../../../imports/App-1/svg-6pmkjbv2xx";
+import { gridBase } from "../code/constants";
 
 /* ─── Spring easing ─────────────────────────────────────────────────────── */
 // cubic-bezier(0.34, 1.56, 0.64, 1) — slight overshoot for a spring feel
@@ -11,8 +12,8 @@ const SMOOTH = "cubic-bezier(0.25,0.46,0.45,0.94)";
 
 export function WhatsAppAnimIcon({ fill = "black" }: { fill?: string }) {
   return (
-    <span className="wa-icon inline-flex" style={{ width: 25, height: 25 }}>
-      <svg width="25" height="25" viewBox="0 0 25 25" fill="none">
+    <span className="wa-icon inline-flex size-[1.5625rem]">
+      <svg className="size-full" viewBox="0 0 25 25" fill="none">
         <path d={svgPaths.p1c760700} fill={fill} />
       </svg>
     </span>
@@ -21,8 +22,8 @@ export function WhatsAppAnimIcon({ fill = "black" }: { fill?: string }) {
 
 export function ArrowAnimIcon({ stroke = "#171717" }: { stroke?: string }) {
   return (
-    <span className="arrow-icon inline-flex" style={{ width: 24, height: 24 }}>
-      <svg width="24" height="24" viewBox="0 0 22 22" fill="none">
+    <span className="arrow-icon inline-flex size-[1.5rem]">
+      <svg className="size-full" viewBox="0 0 22 22" fill="none">
         <path
           d={svgPaths.p2c1b4e80}
           stroke={stroke}
@@ -37,8 +38,8 @@ export function ArrowAnimIcon({ stroke = "#171717" }: { stroke?: string }) {
 
 export function InstagramAnimIcon({ stroke = "#F9CC0A" }: { stroke?: string }) {
   return (
-    <span className="social-icon inline-flex" style={{ width: 22, height: 22 }}>
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+    <span className="social-icon inline-flex size-[1.375rem]">
+      <svg className="size-full" viewBox="0 0 22 22" fill="none">
         <path d={svgPathsApp.pa2a580} stroke={stroke} strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.33333" />
         <path d={svgPathsApp.p1a407680} stroke={stroke} strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.33333" />
         <path d="M16.0417 5.95833H16.0508" stroke={stroke} strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.33333" />
@@ -151,13 +152,9 @@ const VARIANTS: Record<ButtonVariant, VariantDef> = {
 /* ─── Base classes ──────────────────────────────────────────────────────── */
 
 const BASE_PILL =
-  "inline-flex items-center gap-[10px] px-[25px] py-[11px] rounded-[30px] cursor-pointer font-['Montserrat',sans-serif] font-bold text-[16px] tracking-[0.65px] whitespace-nowrap select-none outline-none";
+  "inline-flex items-center gap-[0.625rem] px-[1.5625rem] py-[0.6875rem] rounded-[1.875rem] cursor-pointer font-['Montserrat',sans-serif] font-bold text-[1rem] tracking-[0.040625rem] whitespace-nowrap select-none outline-none";
 
-const BASE_TRANSITION = `transition-all duration-200`;
-
-function buildStyle() {
-  return { transitionTimingFunction: SPRING };
-}
+const BASE_TRANSITION = `transition-all duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)]`;
 
 /* ─── Button component ──────────────────────────────────────────────────── */
 
@@ -207,7 +204,7 @@ export function Button({
         disabled ? "opacity-50 pointer-events-none" : "",
         className,
       ].join(" ")}
-      style={{ ...buildStyle(), ...style }}
+      style={style}
     >
       {children}
     </button>
@@ -257,7 +254,7 @@ export function ButtonLink({
         "btn-group btn-ripple-container",
         className,
       ].join(" ")}
-      style={{ ...buildStyle(), ...style }}
+      style={style}
     >
       {children}
     </a>
@@ -288,6 +285,8 @@ export function IconButton({
   className = "",
 }: IconButtonProps) {
   const { ref, createRipple } = useRipple();
+  const widthHeight = typeof size === "number" ? `${size / 16}rem` : size;
+  const radius = typeof borderRadius === "number" ? `${borderRadius / 16}rem` : (borderRadius.endsWith("px") ? `${parseFloat(borderRadius) / 16}rem` : borderRadius);
 
   return (
     <button
@@ -295,20 +294,18 @@ export function IconButton({
       onClick={(e) => { createRipple(e); onClick?.(); }}
       className={[
         "inline-flex items-center justify-center cursor-pointer outline-none select-none",
-        "transition-all duration-200 btn-group btn-ripple-container",
-        "hover:-translate-y-[2px] hover:scale-[1.08]",
-        "active:translate-y-[1px] active:scale-[0.95]",
+        "transition-all duration-200 btn-group btn-ripple-container ease-[cubic-bezier(0.34,1.56,0.64,1)] border-[0.05rem] border-white/20",
+        "hover:-translate-y-[0.125rem] hover:scale-[1.08]",
+        "active:translate-y-[0.0625rem] active:scale-[0.95]",
         "focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-1",
-        shadow ? shadow : "hover:shadow-[0_6px_18px_rgba(0,0,0,0.25)]",
+        shadow ? shadow : "hover:shadow-[0_0.375rem_1.125rem_rgba(0,0,0,0.25)]",
         className,
       ].join(" ")}
       style={{
-        width: size,
-        height: size,
-        borderRadius,
+        width: widthHeight,
+        height: widthHeight,
+        borderRadius: radius,
         backgroundColor: bg,
-        border: "0.8px solid rgba(255,255,255,0.2)",
-        transitionTimingFunction: SPRING,
       }}
     >
       <span className="social-icon inline-flex">{children}</span>
@@ -338,19 +335,17 @@ export function PlayButton({
       ref={ref as React.Ref<HTMLButtonElement>}
       onClick={(e) => { createRipple(e); onClick?.(); }}
       className={[
-        "relative inline-flex items-center justify-center bg-[#171717] rounded-full cursor-pointer",
+        "relative inline-flex items-center justify-center bg-[#171717] rounded-full cursor-pointer pl-[0.5rem] ease-[cubic-bezier(0.34,1.56,0.64,1)]",
         "transition-all duration-200 btn-play btn-ripple-container",
-        "hover:scale-[1.1] hover:shadow-[0_0_0_8px_rgba(255,255,255,0.15)]",
+        "hover:scale-[1.1] hover:shadow-[0_0_0_0.5rem_rgba(255,255,255,0.15)]",
         "active:scale-[0.95]",
         "focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2",
         className,
       ].join(" ")}
       style={{
-        width: size,
-        height: size,
-        paddingLeft: "8px",
-        border: `4px solid ${borderColor}`,
-        transitionTimingFunction: SPRING,
+        width: `${size / 16}rem`,
+        height: `${size / 16}rem`,
+        border: `0.25rem solid ${borderColor}`,
       }}
     >
       {/* Outer ring pulse */}
@@ -379,19 +374,18 @@ export function SmallButton({ children, onClick, size = 36, className = "" }: Sm
       ref={ref as React.Ref<HTMLButtonElement>}
       onClick={(e) => { createRipple(e); onClick?.(); }}
       className={[
-        "inline-flex items-center justify-center bg-[#171717] cursor-pointer outline-none",
+        "inline-flex items-center justify-center bg-[#171717] cursor-pointer outline-none ease-[cubic-bezier(0.34,1.56,0.64,1)]",
         "transition-all duration-200 btn-group btn-ripple-container",
-        "hover:bg-[#262626] hover:scale-[1.12] hover:-translate-y-[2px]",
+        "hover:bg-[#262626] hover:scale-[1.12] hover:-translate-y-[0.125rem]",
         "active:scale-[0.92] active:bg-[#0a0a0a]",
         "focus-visible:ring-2 focus-visible:ring-[#ffbd24] focus-visible:ring-offset-1",
-        "hover:shadow-[0_6px_16px_rgba(0,0,0,0.35)]",
+        "hover:shadow-[0_0.375rem_1rem_rgba(0,0,0,0.35)]",
         className,
       ].join(" ")}
       style={{
-        width: size,
-        height: size,
-        borderRadius: "18px",
-        transitionTimingFunction: SPRING,
+        width: `${size / 16}rem`,
+        height: `${size / 16}rem`,
+        borderRadius: "1.125rem",
       }}
     >
       <span className="arrow-icon inline-flex">{children}</span>

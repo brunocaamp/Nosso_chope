@@ -3,34 +3,35 @@ import imgPrancheta32 from "figma:asset/6f63adec7cfe453cd371819abd4baadd4162da7a
 import imgGarrafaPilsen1 from "figma:asset/f084f04b43690f8b1c6d50c95bdaf5b8476aaa2e.png";
 import { Navbar } from "../shared/Navbar";
 import { Button, WhatsAppAnimIcon, ArrowAnimIcon } from "../shared/Button";
+import { gridBase } from "../code/constants";
 
 /* ─── Hero title ────────────────────────────────────────────────────────── */
 
 function TitleBox() {
   return (
-    <div className="flex flex-col gap-[11px] items-center justify-center w-full">
-      <div className="flex items-center justify-center" style={{ width: "568.517px" }}>
-        <div style={{ transform: "skewX(0.29deg)" }}>
-          <div className="bg-[#171717] flex items-center justify-center overflow-hidden p-5 rounded-[10px]">
-            <p className="font-['Montserrat',sans-serif] font-extrabold leading-[64px] text-[#fafafa] text-[64px] tracking-[0.8px] uppercase whitespace-nowrap">
+    <div className="flex flex-col gap-[0.6875rem] items-center justify-center w-full">
+      <div className="flex items-center justify-center w-[35.5323rem]">
+        <div className="skew-x-[0.29deg]">
+          <div className="bg-[#171717] flex items-center justify-center overflow-hidden p-5 rounded-[0.625rem]">
+            <p className="font-['Montserrat',sans-serif] font-extrabold leading-[4rem] text-[#fafafa] text-[4rem] tracking-[0.05rem] uppercase whitespace-nowrap">
               o puro malte
             </p>
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center" style={{ width: "731.448px" }}>
-        <div style={{ transform: "skewX(0.29deg)" }}>
-          <div className="bg-[#171717] flex items-center justify-center overflow-hidden p-5 rounded-[10px]">
-            <p className="font-['Montserrat',sans-serif] font-medium leading-[50px] text-[#fafafa] text-[48px] tracking-[0.8px] uppercase whitespace-nowrap">
+      <div className="flex items-center justify-center w-[45.7155rem]">
+        <div className="skew-x-[0.29deg]">
+          <div className="bg-[#171717] flex items-center justify-center overflow-hidden p-5 rounded-[0.625rem]">
+            <p className="font-['Montserrat',sans-serif] font-medium leading-[3.125rem] text-[#fafafa] text-[3rem] tracking-[0.05rem] uppercase whitespace-nowrap">
               que está conquistando
             </p>
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center" style={{ width: "586.677px" }}>
-        <div style={{ transform: "skewX(0.29deg)" }}>
-          <div className="bg-[#171717] flex items-center justify-center overflow-hidden px-[30px] py-5 rounded-[10px]">
-            <p className="font-['Montserrat',sans-serif] font-black leading-[96px] text-[#f2f2f2] text-[96px] tracking-[0.8px] uppercase whitespace-nowrap">
+      <div className="flex items-center justify-center w-[36.6673rem]">
+        <div className="skew-x-[0.29deg]">
+          <div className="bg-[#171717] flex items-center justify-center overflow-hidden px-[1.875rem] py-5 rounded-[0.625rem]">
+            <p className="font-['Montserrat',sans-serif] font-black leading-[6rem] text-[#f2f2f2] text-[6rem] tracking-[0.05rem] uppercase whitespace-nowrap">
               o brasil!
             </p>
           </div>
@@ -43,7 +44,7 @@ function TitleBox() {
 function HeroButtons() {
   return (
     <div className="flex items-center gap-5">
-      <Button variant="whatsapp-dark" style={{ width: "192px" }}>
+      <Button variant="whatsapp-dark" className="w-[12rem]">
         <WhatsAppAnimIcon fill="#FFBD24" />
         Peça Agora!
       </Button>
@@ -55,62 +56,50 @@ function HeroButtons() {
   );
 }
 
-/* ─── ContentBox ────────────────────────────────────────────────────────── */
 
-function ContentBox() {
-  return (
-    <div className="relative shrink-0 overflow-hidden" style={{ height: "813px", width: "100%" }}>
-      <div
-        className="absolute flex items-center justify-center pointer-events-none"
-        style={{ left: "-288px", top: "237.5px", width: "766.394px", height: "910.652px" }}
-      >
-        <div style={{ transform: "rotate(-32.95deg)", flexShrink: 0 }}>
-          <div style={{ width: "361.871px", height: "850.676px", filter: "blur(7.5px)", boxShadow: "10px 4px 24px 0px rgba(0,0,0,0.25)", position: "relative" }}>
-            <img alt="" src={imgPrancheta32} className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
-          </div>
-        </div>
-      </div>
-      <div
-        className="absolute flex items-center justify-center pointer-events-none"
-        style={{ left: "248.58px", top: "129.62px", width: "388.005px", height: "615.248px" }}
-      >
-        <div style={{ transform: "rotate(-15.67deg)", flexShrink: 0 }}>
-          <div className="relative" style={{ width: "242.846px", height: "570.875px" }}>
-            <img alt="" src={imgPrancheta32} className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
-          </div>
-        </div>
-      </div>
-      <div
-        className="absolute flex flex-col gap-6 items-center"
-        style={{ left: "50%", transform: "translateX(-50%)", top: "195.5px", width: "843.478px" }}
-      >
-        <TitleBox />
-        <HeroButtons />
-      </div>
-    </div>
-  );
-}
 
 /* ─── Hero Section ─────────────────────────────────────────────────────── */
 
 export function HeroSection() {
   return (
-    <section
-      className="relative overflow-hidden flex flex-col items-center justify-center w-full"
-      style={{ height: "880px", paddingTop: "64px", background: "linear-gradient(to bottom, #ffd324, #e9a402)" }}
-    >
-      <ContentBox />
-      <Navbar variant="overlay" />
-      <div
-        className="absolute flex items-center justify-center pointer-events-none"
-        style={{ left: "1150px", top: "113px", width: "674.614px", height: "1074.946px" }}
+    <div className="relative w-full">
+      <section
+        className={`${gridBase} relative overflow-hidden items-center justify-center w-full min-h-[55rem] grid-rows-[auto] bg-gradient-to-b from-[#ffd324] to-[#e9a402]`}
       >
-        <div style={{ transform: "rotate(1.73deg)", flexShrink: 0 }}>
-          <div className="relative" style={{ width: "643px", height: "1056px" }}>
-            <img alt="Nosso Chope Pilsen" src={imgGarrafaPilsen1} className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+        <Navbar variant="overlay" />
+
+        <div
+          className="cols-[1_/_3]"
+        >
+          <div className="rotate-[-15.67deg] shrink-0">
+            <div className="relative w-[15.1779rem] h-[35.6797rem]">
+              <img alt="" src={imgPrancheta32} className=" inset-0 w-full h-full object-cover pointer-events-none" />
+            </div>
           </div>
         </div>
+        <div
+          className="col-[4_/_10] skew-y-[-3deg] flex flex-col gap-6 items-center"
+        >
+          <TitleBox />
+          <HeroButtons />
+        </div>
+
+        <div
+          className="absolute flex items-center justify-center pointer-events-none col-start-1 left-[-18rem] top-[14.8438rem] w-[47.8996rem] h-[56.9158rem]"
+        >
+          <div className="rotate-[-32.95deg] shrink-0">
+            <div className="w-[22.6169rem] h-[53.1673rem] blur-[0.46875rem] relative">
+              <img alt="" src={imgPrancheta32} className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+            </div>
+          </div>
+        </div>
+      </section >
+
+      <div
+        className="absolute left-[73rem] top-[3rem] w-[42.1634rem] h-[67.1841rem] z-10"
+      >
+        <img alt="Nosso Chope Pilsen" src={imgGarrafaPilsen1} className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
       </div>
-    </section>
+    </div>
   );
 }

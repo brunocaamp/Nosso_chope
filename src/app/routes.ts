@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import { Root } from "./Root";
+import { gridBase } from "./components/code/constants";
 import { HomePage } from "./pages/HomePage";
 import { ContactPage } from "./pages/ContactPage";
 

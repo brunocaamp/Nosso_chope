@@ -3,6 +3,7 @@ import img473Ml012 from "figma:asset/ff3127b4ddec9e40fab3d04ddd2b2a69c331f558.pn
 import imgGarrafaPilsen901 from "figma:asset/88c9bec97d353474e5a19f715f380cdaba1075e6.png";
 import imgVideo from "figma:asset/a2ea37e5190bf047324318b7618b78228d98c5a7.png";
 import { Button, WhatsAppAnimIcon, PlayButton } from "../shared/Button";
+import { gridBase } from "../code/constants";
 
 interface ProductCardProps {
   image: string;
@@ -16,35 +17,29 @@ interface ProductCardProps {
 function ProductCard({ image, imageWidth, imageHeight, imageAlt, title, subtitle }: ProductCardProps) {
   return (
     <div
-      className="relative inline-grid flex-shrink-0"
-      style={{ gridTemplateColumns: "max-content", gridTemplateRows: "max-content", placeItems: "start" }}
+      className="relative inline-grid flex-shrink-0 grid-cols-[max-content] grid-rows-[max-content] place-items-start"
     >
       <div
-        className="bg-[#f2f2f2] border-2 border-white rounded-[44px] shadow-[0px_12px_16px_-4px_rgba(0,0,0,0.08),0px_4px_6px_-2px_rgba(0,0,0,0.03)] opacity-30"
-        style={{ gridColumn: 1, gridRow: 1, width: "432px", height: "473px", marginTop: "96.9px", marginLeft: 0 }}
+        className="bg-[#f2f2f2] border-2 border-white rounded-[2.75rem] shadow-[0_0.75rem_1rem_-0.25rem_rgba(0,0,0,0.08),0_0.25rem_0.375rem_-0.125rem_rgba(0,0,0,0.03)] opacity-30 col-start-1 row-start-1 w-[27rem] h-[29.5625rem] mt-[6.05625rem] ml-0"
       />
       <div
-        className="bg-[#f2f2f2] border-2 border-white rounded-[44px] shadow-[0px_12px_16px_-4px_rgba(0,0,0,0.08),0px_4px_6px_-2px_rgba(0,0,0,0.03)]"
-        style={{ gridColumn: 1, gridRow: 1, width: "400px", height: "450px", marginTop: "108.9px", marginLeft: "16px" }}
+        className="bg-[#f2f2f2] border-2 border-white rounded-[2.75rem] shadow-[0_0.75rem_1rem_-0.25rem_rgba(0,0,0,0.08),0_0.25rem_0.375rem_-0.125rem_rgba(0,0,0,0.03)] col-start-1 row-start-1 w-[25rem] h-[28.125rem] mt-[6.80625rem] ml-[1rem]"
       />
       <div
-        className="flex flex-col items-center gap-3"
-        style={{ gridColumn: 1, gridRow: 1, width: "311px", marginLeft: "75px", marginTop: 0 }}
+        className="flex flex-col items-center gap-3 col-start-1 row-start-1 w-[19.4375rem] ml-[4.6875rem] mt-0"
       >
-        <div style={{ width: `${imageWidth}px`, height: `${imageHeight}px`, flexShrink: 0, position: "relative" }}>
+        <div className="shrink-0 relative" style={{ width: `${imageWidth / 16}rem`, height: `${imageHeight / 16}rem` }}>
           <img src={image} alt={imageAlt} className="absolute inset-0 w-full h-full object-cover" />
         </div>
         <div className="flex flex-col items-center w-full gap-[19px]">
           <div className="flex flex-col items-center gap-[2px] text-center uppercase">
             <p
-              className="font-['Montserrat',sans-serif] font-black text-black tracking-[0.8px]"
-              style={{ fontSize: "clamp(1.2rem,1.67vw,2rem)", lineHeight: "1.3", width: "307px" }}
+              className="font-['Montserrat',sans-serif] font-black text-black tracking-[0.05rem] text-[clamp(1.2rem,1.67vw,2rem)] leading-[1.3] w-[19.1875rem]"
             >
               {title}
             </p>
             <p
-              className="font-['Montserrat',sans-serif] font-normal text-black tracking-[1.2px]"
-              style={{ fontSize: "clamp(0.9rem,1.09vw,1.3125rem)", lineHeight: "1.5", width: "367px" }}
+              className="font-['Montserrat',sans-serif] font-normal text-black tracking-[0.075rem] text-[clamp(0.9rem,1.09vw,1.3125rem)] leading-[1.5] w-[22.9375rem]"
             >
               {subtitle}
             </p>
@@ -62,46 +57,39 @@ function ProductCard({ image, imageWidth, imageHeight, imageAlt, title, subtitle
 function PilsenHeading() {
   return (
     <div
-      className="flex flex-col gap-[26px] items-start justify-center"
-      style={{ transform: "rotate(-3deg) skewX(-3deg)", width: "738px" }}
+      className="flex flex-col gap-[1.625rem] items-start justify-center rotate-[-3deg] skew-x-[-3deg] w-[46.125rem]"
     >
       <p
-        className="font-['Montserrat',sans-serif] font-medium text-[#1a0e04] tracking-[1.56px] whitespace-nowrap"
-        style={{ fontSize: "clamp(2rem,2.92vw,3.5rem)", lineHeight: "1.2" }}
+        className="font-['Montserrat',sans-serif] font-medium text-[#1a0e04] tracking-[0.0975rem] whitespace-nowrap text-[clamp(2rem,2.92vw,3.5rem)] leading-[1.2]"
       >
         Nosso Chope
       </p>
-      <div style={{ display: "inline-block", transform: "skewX(0.29deg)" }}>
-        <div className="relative bg-[#ffbd24] rounded-[10px] px-[30px] py-5">
+      <div className="inline-block skew-x-[0.29deg]">
+        <div className="relative bg-[#ffbd24] rounded-[0.625rem] px-[1.875rem] py-[1.25rem]">
           <p
-            className="font-['Montserrat',sans-serif] font-black text-[#171717] uppercase tracking-[0.8px] whitespace-nowrap"
-            style={{ fontSize: "clamp(3rem,5vw,6rem)", lineHeight: "1" }}
+            className="font-['Montserrat',sans-serif] font-black text-[#171717] uppercase tracking-[0.05rem] whitespace-nowrap text-[clamp(3rem,5vw,6rem)] leading-none"
           >
             PILSEN
           </p>
           <div
-            className="absolute pointer-events-none rounded-[18px]"
-            style={{ inset: "-8px", border: "8px solid white" }}
+            className="absolute pointer-events-none rounded-[1.125rem] inset-[-0.5rem] border-[0.5rem] border-white"
             aria-hidden
           />
         </div>
       </div>
       <p
-        className="font-['Montserrat',sans-serif] font-medium text-[#1a0e04] tracking-[1.56px] whitespace-nowrap"
-        style={{ fontSize: "clamp(2rem,2.92vw,3.5rem)", lineHeight: "1.2" }}
+        className="font-['Montserrat',sans-serif] font-medium text-[#1a0e04] tracking-[0.0975rem] whitespace-nowrap text-[clamp(2rem,2.92vw,3.5rem)] leading-[1.2]"
       >
         O sabor que une
       </p>
-      <div className="relative" style={{ height: "clamp(3rem,5vw,6rem)" }}>
+      <div className="relative h-[clamp(3rem,5vw,6rem)]">
         <p
-          className="font-['Montserrat',sans-serif] font-black text-[#171717] absolute"
-          style={{ fontSize: "clamp(3rem,5vw,6rem)", lineHeight: "1", top: "5px" }}
+          className="font-['Montserrat',sans-serif] font-black text-[#171717] absolute text-[clamp(3rem,5vw,6rem)] leading-none top-[0.3125rem]"
         >
           A GALERA!
         </p>
         <p
-          className="font-['Montserrat',sans-serif] font-black text-[#f2f2f2]"
-          style={{ fontSize: "clamp(3rem,5vw,6rem)", lineHeight: "1" }}
+          className="font-['Montserrat',sans-serif] font-black text-[#f2f2f2] text-[clamp(3rem,5vw,6rem)] leading-none"
         >
           A GALERA!
         </p>
@@ -112,16 +100,14 @@ function PilsenHeading() {
 
 function PilsenTextRight() {
   return (
-    <div className="flex flex-col gap-[14px] items-start" style={{ width: "422px" }}>
+    <div className="flex flex-col gap-[0.875rem] items-start w-[26.375rem]">
       <p
-        className="font-['Montserrat',sans-serif] font-extrabold text-[#4a3728] leading-[1.47]"
-        style={{ fontSize: "clamp(0.875rem,0.99vw,1.1875rem)" }}
+        className="font-['Montserrat',sans-serif] font-extrabold text-[#4a3728] leading-[1.47] text-[clamp(0.875rem,0.99vw,1.1875rem)]"
       >
         Seja para o seu churrasco com a galera, o almoço de domingo em família ou para acompanhar o jogão na TV, somos a aposta certa.
       </p>
       <p
-        className="font-['Montserrat',sans-serif] font-normal text-[#4a3728] leading-[1.69]"
-        style={{ fontSize: "1rem" }}
+        className="font-['Montserrat',sans-serif] font-normal text-[#4a3728] leading-[1.69] text-[1rem]"
       >
         Do coração do Brasil,{" "}
         <strong className="font-bold">o Pilsen do Nosso Chope</strong>
@@ -137,34 +123,27 @@ function PilsenTextRight() {
 
 function PilsenProductDetail() {
   return (
-    <div className="relative w-full overflow-hidden" style={{ minHeight: "800px", paddingTop: "50px" }}>
-      <div className="relative w-full" style={{ height: "800px" }}>
+    <div className="relative w-full overflow-hidden min-h-[50rem] pt-[3.125rem]">
+      <div className="relative w-full h-[50rem]">
         {/* Heading left */}
-        <div className="absolute" style={{ left: "304px", top: "24px" }}>
+        <div className="absolute left-[19rem] top-[1.5rem]">
           <PilsenHeading />
         </div>
 
         {/* Bottle center */}
         <div
-          className="absolute"
-          style={{
-            left: "50%",
-            top: "-27px",
-            transform: "translateX(-50%)",
-            width: "375px",
-            height: "782px",
-          }}
+          className="absolute left-1/2 -translate-x-1/2 top-[-1.6875rem] w-[23.4375rem] h-[48.875rem]"
         >
           <img src={img473Ml012} alt="Nosso Chope Pilsen" className="absolute inset-0 w-full h-full object-cover" />
         </div>
 
         {/* Text right */}
-        <div className="absolute" style={{ left: "1216px", top: "107px" }}>
+        <div className="absolute left-[76rem] top-[6.6875rem]">
           <PilsenTextRight />
         </div>
 
         {/* Dashed pointer line */}
-        <div className="absolute pointer-events-none" style={{ left: "1036px", top: "115px" }}>
+        <div className="absolute pointer-events-none left-[64.75rem] top-[7.1875rem]">
           <svg width="157" height="23" viewBox="0 0 157.277 22.4682" fill="none">
             <line stroke="#737373" strokeDasharray="2 2" x2="146.043" y1="10.734" y2="10.734" />
             <ellipse cx="146.043" cy="11.234" fill="#FFBD24" rx="11.234" ry="11.234" />
@@ -177,27 +156,24 @@ function PilsenProductDetail() {
 
 function ProductsSubsection() {
   return (
-    <div className="relative w-full overflow-hidden" style={{ minHeight: "2044px" }}>
+    <div className="relative w-full overflow-hidden min-h-[127.75rem]">
       {/* Title area */}
-      <div className="absolute" style={{ left: "250px", top: "252px" }}>
+      <div className="absolute left-[15.625rem] top-[15.75rem]">
         <div className="flex flex-col gap-2">
           <p
-            className="font-['Montserrat',sans-serif] font-black text-white uppercase tracking-[1.2px]"
-            style={{ fontSize: "clamp(2.5rem,3.75vw,4.5rem)", lineHeight: "1.33", width: "710px" }}
+            className="font-['Montserrat',sans-serif] font-black text-white uppercase tracking-[0.075rem] text-[clamp(2.5rem,3.75vw,4.5rem)] leading-[1.33] w-[44.375rem]"
           >
             Mais opções, mais sabor
           </p>
-          <div style={{ transform: "rotate(-2.32deg) skewX(0.29deg)", display: "inline-block" }}>
-            <div className="relative bg-[#fafafa] rounded-[10px] px-5 py-5">
+          <div className="rotate-[-2.32deg] skew-x-[0.29deg] inline-block">
+            <div className="relative bg-[#fafafa] rounded-[0.625rem] px-[1.25rem] py-[1.25rem]">
               <p
-                className="font-['Montserrat',sans-serif] font-black text-[#171717] uppercase tracking-[1px] whitespace-nowrap"
-                style={{ fontSize: "clamp(2.5rem,3.75vw,4.5rem)", lineHeight: "1" }}
+                className="font-['Montserrat',sans-serif] font-black text-[#171717] uppercase tracking-[0.0625rem] whitespace-nowrap text-[clamp(2.5rem,3.75vw,4.5rem)] leading-none"
               >
                 mais encontros
               </p>
               <div
-                className="absolute pointer-events-none rounded-[18px]"
-                style={{ inset: "-8px", border: "8px solid #ffbd24" }}
+                className="absolute pointer-events-none rounded-[1.125rem] inset-[-0.5rem] border-[0.5rem] border-[#ffbd24]"
                 aria-hidden
               />
             </div>
@@ -207,8 +183,7 @@ function ProductsSubsection() {
 
       {/* Product cards */}
       <div
-        className="absolute flex items-center gap-[50px]"
-        style={{ left: "50%", transform: "translateX(-50%)", top: "497px" }}
+        className="absolute flex items-center gap-[3.125rem] left-1/2 -translate-x-1/2 top-[31.0625rem]"
       >
         <ProductCard
           image={imgLongNeckGarrafaBranca1}
@@ -238,11 +213,10 @@ function ProductsSubsection() {
 
       {/* Video area */}
       <div
-        className="absolute left-0 right-0 overflow-hidden"
-        style={{ top: "1215px", height: "829px" }}
+        className="absolute left-0 right-0 overflow-hidden top-[75.9375rem] h-[51.8125rem]"
       >
         <img src={imgVideo} alt="Vídeo Nosso Chope" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 flex items-center justify-center" style={{ paddingTop: "33px" }}>
+        <div className="absolute inset-0 flex items-center justify-center pt-[2.0625rem]">
           <PlayButton size={124} borderColor="white">
             <svg width="54" height="54" viewBox="0 0 54 54" fill="none">
               <path d="M21 16L38 27L21 38V16Z" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

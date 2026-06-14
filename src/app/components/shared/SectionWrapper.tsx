@@ -1,4 +1,5 @@
 import React from "react";
+import { gridBase } from "../code/constants";
 
 interface SectionWrapperProps {
   children: React.ReactNode;

@@ -1,5 +1,6 @@
 import React from "react";
 import svgPaths from "../../../imports/App-1/svg-6pmkjbv2xx";
+import { gridBase } from "../code/constants";
 
 export function WhatsAppIcon({ fill = "black", size = 25 }: { fill?: string; size?: number }) {
   return (

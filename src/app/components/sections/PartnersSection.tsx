@@ -3,6 +3,7 @@ import imgImage5 from "figma:asset/b3200e5bdec36f9c3876a5facc8a13c6cbf8df27.png"
 import imgAssaiLogo from "figma:asset/0dc0127cfe32b13e632cd33260374726629b23d8.png";
 import { LocationIcon, ArrowRightIcon } from "../shared/icons";
 import { Button, ArrowAnimIcon, SmallButton } from "../shared/Button";
+import { gridBase } from "../code/constants";
 
 interface PartnerCardProps {
   name: string;
@@ -12,51 +13,36 @@ interface PartnerCardProps {
 function PartnerCard({ name, logo }: PartnerCardProps) {
   return (
     <div
-      className="relative flex-shrink-0 rounded-[16px] overflow-hidden bg-transparent"
-      style={{
-        width: "361px",
-        height: "432px",
-        border: "1px solid #f2f2f2",
-        boxShadow: "0px 4px 24px 0px rgba(26,14,4,0.1)",
-      }}
+      className="relative flex-shrink-0 rounded-[1rem] overflow-hidden bg-transparent w-[22.5625rem] h-[27rem] border border-[#f2f2f2] shadow-[0_0.25rem_1.5rem_0_rgba(26,14,4,0.1)]"
     >
       {/* Background image */}
       <div className="absolute inset-0">
         <img src={imgImagem} alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, rgba(26,14,4,0.75) 0%, rgba(0,0,0,0) 55%)" }}
+          className="absolute inset-0 bg-[linear-gradient(to_top,rgba(26,14,4,0.75)_0%,rgba(0,0,0,0)_55%)]"
         />
         <img
           src={imgImage5}
           alt={name}
-          className="absolute object-cover"
-          style={{ left: "-81px", top: 0, width: "768px", height: "432px" }}
+          className="absolute object-cover left-[-5.0625rem] top-0 w-[48rem] h-[27rem]"
         />
       </div>
 
       {/* Logo badge */}
       <div
-        className="absolute bg-white flex items-center justify-center rounded-[50px] px-[10px]"
-        style={{ left: "25px", top: "17px", width: "66px", height: "66px" }}
+        className="absolute bg-white flex items-center justify-center rounded-full px-[0.625rem] left-[1.5625rem] top-[1.0625rem] w-[4.125rem] h-[4.125rem]"
       >
-        <img src={logo} alt={name} style={{ width: "49px", height: "36px", objectFit: "cover" }} />
+        <img src={logo} alt={name} className="w-[3.0625rem] h-[2.25rem] object-cover" />
       </div>
 
       {/* Bottom bar */}
       <div
-        className="absolute left-0 right-0 flex items-center justify-between px-5 py-[18px] backdrop-blur-[10px]"
-        style={{
-          bottom: 0,
-          height: "78px",
-          backgroundColor: "rgba(38,38,38,0.4)",
-        }}
+        className="absolute left-0 right-0 flex items-center justify-between px-[1.25rem] py-[1.125rem] backdrop-blur-[0.625rem] bottom-0 h-[4.875rem] bg-[rgba(38,38,38,0.4)]"
       >
         <div className="flex items-center gap-2">
           <LocationIcon stroke="#FFBD24" size={25} />
           <span
-            className="font-['Montserrat',sans-serif] font-extrabold text-[#ffbd24] uppercase tracking-[0.6px] whitespace-nowrap"
-            style={{ fontSize: "1.125rem", lineHeight: "1.33" }}
+            className="font-['Montserrat',sans-serif] font-extrabold text-[#ffbd24] uppercase tracking-[0.6px] whitespace-nowrap text-[1.125rem] leading-[1.33]"
           >
             {name}
           </span>
@@ -78,18 +64,16 @@ const partners = [
 
 export function PartnersSection() {
   return (
-    <section className="w-full bg-white flex flex-col items-center justify-center gap-[60px] py-[150px]">
+    <section className="w-full bg-white flex flex-col items-center justify-center gap-[3.75rem] py-[9.375rem]">
       {/* Title */}
-      <div className="flex flex-col items-center text-center gap-[14px] px-[319px]">
+      <div className="flex flex-col items-center text-center gap-[0.875rem] px-[19.9375rem]">
         <p
-          className="font-['Montserrat',sans-serif] font-extrabold text-[#1a0e04] uppercase tracking-[1.19px] whitespace-nowrap"
-          style={{ fontSize: "clamp(2rem,3.33vw,4rem)", lineHeight: "1" }}
+          className="font-['Montserrat',sans-serif] font-extrabold text-[#1a0e04] uppercase tracking-[0.074375rem] whitespace-nowrap text-[clamp(2rem,3.33vw,4rem)] leading-none"
         >
           Onde encontrar
         </p>
         <p
-          className="font-['Montserrat',sans-serif] font-normal text-[#4a3728]"
-          style={{ fontSize: "1.125rem", lineHeight: "1.42" }}
+          className="font-['Montserrat',sans-serif] font-normal text-[#4a3728] text-[1.125rem] leading-[1.42]"
         >
           Encontre o nosso chope nos melhores mercados e estabelecimento!
         </p>
@@ -103,22 +87,20 @@ export function PartnersSection() {
       </div>
 
       {/* Bottom CTA */}
-      <div className="flex items-center justify-center gap-[44px] px-[319px]">
-        <div className="flex flex-col gap-[5px] text-center">
+      <div className="flex items-center justify-center gap-[2.75rem] px-[19.9375rem]">
+        <div className="flex flex-col gap-[0.3125rem] text-center">
           <p
-            className="font-['Montserrat',sans-serif] font-extrabold text-[#1a0e04] uppercase tracking-[1.19px] whitespace-nowrap"
-            style={{ fontSize: "1.5rem", lineHeight: "1.17" }}
+            className="font-['Montserrat',sans-serif] font-extrabold text-[#1a0e04] uppercase tracking-[0.074375rem] whitespace-nowrap text-[1.5rem] leading-[1.17]"
           >
             Seja um parceiro Nosso Chope
           </p>
           <p
-            className="font-['Montserrat',sans-serif] font-normal text-[#4a3728]"
-            style={{ fontSize: "1.125rem", lineHeight: "1.33" }}
+            className="font-['Montserrat',sans-serif] font-normal text-[#4a3728] text-[1.125rem] leading-[1.33]"
           >
             Tenha o queridinho do Brasil em seu estabelecimento
           </p>
         </div>
-        <div className="flex items-center gap-[14px]">
+        <div className="flex items-center gap-[0.875rem]">
           <Button variant="arrow-yellow">
             <ArrowAnimIcon stroke="#171717" />
             Seja um parceiro
