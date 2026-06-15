@@ -1,4 +1,10 @@
+import React, { useRef, useEffect, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gridBase } from "../code/constants";
+import { ScrollFadeIn } from "../animations/ScrollFadeIn";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface TagBoxProps {
   text: string;
@@ -11,43 +17,60 @@ interface TagBoxProps {
 }
 
 function TagBox({ text, bg, textColor, fontSize, fontWeight, rotation, borderColor = "white" }: TagBoxProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const currentRotation = isHovered ? rotation - 2 : rotation;
+  const currentScale = isHovered ? 1.05 : 1;
+
   return (
     <div
-      className="relative inline-block skew-x-[0.29deg]"
-      style={{ transform: `rotate(${rotation}deg)` }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative inline-flex items-center justify-center px-[3.125rem] py-[1.8rem] rounded-[1rem] cursor-pointer"
+      style={{
+        transform: `rotate(${currentRotation}deg) skewX(0.29deg) scale(${currentScale})`,
+        transition: "transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)",
+        backgroundColor: bg,
+        border: `6px solid ${borderColor}`,
+      }}
     >
-      <div
-        className="flex items-center justify-center overflow-hidden px-[3.125rem] py-[3.125rem] rounded-[0.625rem]"
-        style={{ backgroundColor: bg }}
-      >
-        <p
-          className="whitespace-nowrap uppercase tracking-[0.05rem] font-['Montserrat',sans-serif] leading-none"
-          style={{
-            fontWeight,
-            fontSize,
-            color: textColor,
-          }}
-        >
-          {text}
-        </p>
-      </div>
-      {/* Outer border ring */}
-      <div
-        className="absolute pointer-events-none rounded-[1.125rem] inset-[-0.5rem]"
+      <span
+        className="whitespace-nowrap uppercase tracking-[0.05rem] font-['Montserrat',sans-serif] leading-none"
         style={{
-          border: `0.25rem solid ${borderColor}`,
+          fontWeight,
+          fontSize,
+          color: textColor,
         }}
-        aria-hidden
-      />
+      >
+        {text}
+      </span>
     </div>
   );
 }
 
 export function CtaTagsSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    gsap.to(containerRef.current, {
+      scale: 0.8,
+      filter: "blur(10px)",
+      ease: "none",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "10% top", // When top of viewport is 10% below top of the div
+        end: "bottom top", // Until scroll reaches the end of the div
+        scrub: true,
+      }
+    });
+  }, []);
+
   return (
-    <section className="w-full flex flex-col items-center py-[3.125rem] pb-[9.375rem] overflow-hidden">
-      <div className="flex flex-col items-center gap-[-1.0625rem]">
-        <div className="flex items-center justify-center mb-[-1.0625rem] w-[24.8125rem] h-[8.4375rem]">
+    <section className={`${gridBase} w-full py-[3.125rem] pb-[9.375rem] overflow-hidden`}>
+      <div ref={containerRef} className="col-[1_/_-1] flex flex-col items-center space-y-[-1.0625rem] origin-center">
+        
+        <ScrollFadeIn direction="left">
           <TagBox
             text="SABOR"
             bg="#171717"
@@ -56,8 +79,9 @@ export function CtaTagsSection() {
             fontWeight="600"
             rotation={-1.58}
           />
-        </div>
-        <div className="flex items-center justify-center mb-[-1.0625rem] w-[43.75rem] h-[8.8125rem]">
+        </ScrollFadeIn>
+
+        <ScrollFadeIn direction="right">
           <TagBox
             text="MARCANTE"
             bg="#ffbd24"
@@ -66,8 +90,9 @@ export function CtaTagsSection() {
             fontWeight="900"
             rotation={1.43}
           />
-        </div>
-        <div className="flex items-center justify-center mb-[-1.0625rem] w-[37.4375rem] h-[9.375rem]">
+        </ScrollFadeIn>
+
+        <ScrollFadeIn direction="left">
           <TagBox
             text="equilíbrio"
             bg="#171717"
@@ -76,8 +101,9 @@ export function CtaTagsSection() {
             fontWeight="700"
             rotation={-2.49}
           />
-        </div>
-        <div className="flex items-center justify-center w-[45.4375rem] h-[10rem]">
+        </ScrollFadeIn>
+
+        <ScrollFadeIn direction="right">
           <TagBox
             text="perfeito"
             bg="#ffbd24"
@@ -86,7 +112,8 @@ export function CtaTagsSection() {
             fontWeight="900"
             rotation={2.87}
           />
-        </div>
+        </ScrollFadeIn>
+
       </div>
     </section>
   );

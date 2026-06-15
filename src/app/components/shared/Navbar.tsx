@@ -58,14 +58,15 @@ const NAV_LINKS = [
 
 function NavMenu() {
   return (
-    <div className="bg-[#f2f2f2] drop-shadow-[0_0.75rem_0.5rem_rgba(0,0,0,0.08),0_0.25rem_0.1875rem_rgba(0,0,0,0.03)] flex items-center gap-[2rem] px-[2.5rem] py-[1.25rem] rounded-[2.5rem] font-['Inter',sans-serif] font-medium text-[#262626] text-[1rem] whitespace-nowrap">
+    <div className="bg-[#f2f2f2] shadow-[0_0.75rem_0.5rem_rgba(0,0,0,0.08),0_0.25rem_0.1875rem_rgba(0,0,0,0.03)] flex items-center gap-[2rem] px-[2.5rem] py-[1.25rem] rounded-[2.5rem] font-['Inter',sans-serif] font-medium text-[#262626] text-[1rem] whitespace-nowrap">
       {NAV_LINKS.map(({ label, href }) => (
         <Link
           key={label}
           to={href}
-          className="hover:opacity-75 transition-opacity"
+          className="group relative transition-all duration-300 hover:text-black hover:-translate-y-[0.125rem]"
         >
           {label}
+          <span className="absolute -bottom-[0.25rem] left-1/2 w-0 h-[0.125rem] bg-[#f9cc0a] transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:w-full group-hover:left-0 rounded-full"></span>
         </Link>
       ))}
     </div>

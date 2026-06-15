@@ -1,3 +1,4 @@
+import React from "react";
 import imgRedDraft1 from "figma:asset/182cddbe971fadb9147bcf0a0b11dd2cdc7220d5.png";
 import imgReddraft600Ml1 from "figma:asset/a7c516c817fabe544b06e970454c9a0fbd300d6f.png";
 import imgPrancheta32 from "figma:asset/6f63adec7cfe453cd371819abd4baadd4162da7a.png";
@@ -18,7 +19,7 @@ function TagBox({ text, bg, textColor, fontSize, fontWeight, rotation }: {
       style={{ transform: `rotate(${rotation}deg)` }}
     >
       <div
-        className="flex items-center justify-center overflow-hidden px-[2.4375rem] py-[2.5rem] rounded-[0.625rem]"
+        className="flex items-center justify-center px-[1.6rem] py-[1.6rem] rounded-[0.625rem]"
         style={{ backgroundColor: bg }}
       >
         <p
@@ -39,52 +40,52 @@ function TagBox({ text, bg, textColor, fontSize, fontWeight, rotation }: {
 function RedDraftBranding() {
   return (
     <div
-      className="absolute flex flex-col items-center justify-center gap-[3.1875rem] left-[17.4375rem] top-1/2 -translate-y-1/2 w-[44.625rem]"
+      className="col-[2_/_6] flex flex-col items-center justify-center gap-[3.1875rem]"
     >
       {/* Logo */}
-      <div className="flex flex-col items-center gap-[1.125rem]">
-        <LogoLightSvg width={364} height={206} />
-        <div className="bg-[#f2f2f2] flex items-center justify-center px-[1.875rem] py-[0.9375rem] w-full">
-          <p
-            className="font-['Montserrat',sans-serif] font-bold text-[#c4217e] uppercase tracking-[0.075rem] whitespace-nowrap text-[clamp(2rem,2.81vw,3.375rem)] leading-none"
-          >
-            Red draft
-          </p>
-        </div>
+      <div className="flex flex-col items-center gap-[0.125rem]">
+        <LogoLightSvg width={300} height={206} />
+
+        <p
+          className="bg-[#f2f2f2] px-[1.875rem] py-[0.9375rem] text-center font-['Montserrat',sans-serif] font-bold text-[#c4217e] uppercase whitespace-nowrap text-[clamp(2rem,2.2vw,3.375rem)] leading-none"
+        >
+          Red draft
+        </p>
+
       </div>
 
       {/* Tag boxes */}
-      <div className="flex flex-col items-center gap-[-1.3125rem]">
-        <div className="flex items-center justify-center mb-[-1.3125rem]">
-          <TagBox
-            text="para quem ousa"
-            bg="#c4217e"
-            textColor="#fafafa"
-            fontSize="clamp(1.5rem,2.6vw,3.125rem)"
-            fontWeight="600"
-            rotation={-1.58}
-          />
-        </div>
-        <div className="flex items-center justify-center mb-[-1.3125rem]">
-          <TagBox
-            text="viver com"
-            bg="#f2f2f2"
-            textColor="#c4217e"
-            fontSize="clamp(1.8rem,3.125vw,3.75rem)"
-            fontWeight="900"
-            rotation={1.43}
-          />
-        </div>
-        <div className="flex items-center justify-center">
-          <TagBox
-            text="intensidade!"
-            bg="#c4217e"
-            textColor="#f2f2f2"
-            fontSize="clamp(1.8rem,3.125vw,3.75rem)"
-            fontWeight="700"
-            rotation={-2.49}
-          />
-        </div>
+      <div className="flex flex-col items-center space-y-[-0.5rem]">
+
+        <TagBox
+          text="para quem ousa"
+          bg="#c4217e"
+          textColor="#fafafa"
+          fontSize="clamp(1.5rem,2.6vw,3.125rem)"
+          fontWeight="600"
+          rotation={-1.58}
+        />
+
+
+        <TagBox
+          text="viver com"
+          bg="#f2f2f2"
+          textColor="#c4217e"
+          fontSize="clamp(1.8rem,3.125vw,3.75rem)"
+          fontWeight="900"
+          rotation={1.43}
+        />
+
+
+        <TagBox
+          text="intensidade!"
+          bg="#c4217e"
+          textColor="#f2f2f2"
+          fontSize="clamp(1.8rem,3.125vw,3.75rem)"
+          fontWeight="700"
+          rotation={-1.29}
+        />
+
       </div>
     </div>
   );
@@ -92,13 +93,12 @@ function RedDraftBranding() {
 
 function RedDraftHero() {
   return (
-    <div className="relative w-full overflow-hidden h-[61.25rem]">
-      {/* Background image */}
-      <img
-        src={imgRedDraft1}
-        alt="Red Draft"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+    <div
+      className={`${gridBase} relative w-full overflow-hidden h-[61.25rem] bg-[image:var(--bg-image-desktop-lg)] bg-cover bg-center`}
+      style={{
+        '--bg-image-desktop-lg': `url(${imgRedDraft1})`,
+      } as React.CSSProperties}>
+
       <RedDraftBranding />
     </div>
   );
@@ -134,41 +134,44 @@ function SizesBox() {
 function RedDraftDetail() {
   return (
     <div
-      className="w-full overflow-hidden relative bg-gradient-to-b from-[#822d81] to-[#471046] h-[76.9375rem]"
+      className={`${gridBase} py-[8rem] items-center  justify-center w-full overflow-hidden relative bg-gradient-to-b from-[#822d81] to-[#471046] h-[76.9375rem]`}
     >
-      {/* Decorative icons */}
-      <div
-        className="absolute pointer-events-none left-[12.5625rem] top-[2.875rem] right-0 bottom-[32%]"
-      >
+      <div className="col-[1_/_7] row-[1_/_-1] relative">
+        {/* Decorative icons */}
         <div
-          className="absolute left-[12.5625rem] top-[2.875rem] w-[18.75rem] h-[31.25rem] rotate-[-30.55deg]"
+          className="absolute pointer-events-none left-[12.5625rem] top-[2.875rem] right-0 bottom-[32%]"
         >
-          <IconReddraftCevada />
+          <div
+            className="absolute left-[12.5625rem] top-[2.875rem] w-[18.75rem] h-[31.25rem] rotate-[-30.55deg]"
+          >
+            <IconReddraftCevada />
+          </div>
+          <div
+            className="absolute left-[35.875rem] top-[29.6875rem] w-[29.5rem] h-[33.0625rem] rotate-[62.77deg]"
+          >
+            <IconReddraftGrape />
+          </div>
         </div>
+
+        {/* Main Red Draft bottle */}
         <div
-          className="absolute left-[35.875rem] top-[29.6875rem] w-[29.5rem] h-[33.0625rem] rotate-[62.77deg]"
+          className="absolute pointer-events-none left-1/2 -translate-x-[12.5rem] top-[2.875rem] w-[17.4375rem] h-[57.8125rem] "
         >
-          <IconReddraftGrape />
+          <img src={imgReddraft600Ml1} alt="Red Draft 600ml" className="w-[17.4375rem] h-[57.8125rem] rotate-[12deg] [filter:drop-shadow(0.25rem_0.25rem_1.5rem_rgba(0,0,0,0.35))_drop-shadow(1.25rem_1.5rem_2.75rem_rgba(0,0,0,0.25))]" />
+        </div>
+
+        {/* Pilsen bottle behind */}
+        <div
+          className="absolute pointer-events-none left-[18.25rem] top-[29.375rem] w-[16.6875rem] h-[39.25rem] rotate-[-16.8deg] shadow-[0.375rem_0.375rem_0.5625rem_0_rgba(0,0,0,0.45),_1.25rem_0.875rem_2.125rem_0_rgba(0,0,0,0.35)]"
+        >
+          <img src={imgPrancheta32} alt="" className="absolute inset-0 w-full h-full object-cover" />
         </div>
       </div>
 
-      {/* Main Red Draft bottle */}
-      <div
-        className="absolute pointer-events-none left-1/2 -translate-x-[12.5rem] rotate-[12deg] top-[2.875rem] w-[17.4375rem] h-[57.8125rem] shadow-[0.25rem_0.25rem_1.5rem_0_rgba(0,0,0,0.35),_1.25rem_1.5rem_2.75rem_0_rgba(0,0,0,0.25)]"
-      >
-        <img src={imgReddraft600Ml1} alt="Red Draft 600ml" className="absolute inset-0 w-full h-full object-cover" />
-      </div>
-
-      {/* Pilsen bottle behind */}
-      <div
-        className="absolute pointer-events-none left-[18.25rem] top-[29.375rem] w-[16.6875rem] h-[39.25rem] rotate-[-16.8deg] shadow-[0.375rem_0.375rem_0.5625rem_0_rgba(0,0,0,0.45),_1.25rem_0.875rem_2.125rem_0_rgba(0,0,0,0.35)]"
-      >
-        <img src={imgPrancheta32} alt="" className="absolute inset-0 w-full h-full object-cover" />
-      </div>
 
       {/* Text content right */}
       <div
-        className="absolute flex flex-col gap-[2.1875rem] items-start left-[64.5rem] top-[17.75rem] w-[36.375rem]"
+        className="col-[8_/_12] flex flex-col gap-[2.1875rem] items-start row-[1_/_-1]"
       >
         {/* Title */}
         <div className="flex flex-col items-start">

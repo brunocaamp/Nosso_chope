@@ -5,19 +5,19 @@
   position: relative;
   overflow: hidden;
 }
+
 .btn-shimmer::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 20%,
-    rgba(255, 255, 255, 0.38) 50%,
-    transparent 80%
-  );
+  background: linear-gradient(105deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.38) 50%,
+      transparent 80%);
   transform: translateX(-120%) skewX(-15deg);
   pointer-events: none;
 }
+
 .btn-shimmer:hover::after {
   transform: translateX(140%) skewX(-15deg);
   transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -25,8 +25,15 @@
 
 /* Pulse glow — keyframe for yellow glow buttons */
 @keyframes btn-glow-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(249, 204, 10, 0); }
-  50%       { box-shadow: 0 0 20px 4px rgba(249, 204, 10, 0.45); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(249, 204, 10, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 20px 4px rgba(249, 204, 10, 0.45);
+  }
 }
 
 /* Ripple click effect */
@@ -36,10 +43,12 @@
     opacity: 0;
   }
 }
+
 .btn-ripple-container {
   position: relative;
   overflow: hidden;
 }
+
 .btn-ripple-container .ripple {
   position: absolute;
   border-radius: 50%;
@@ -51,10 +60,21 @@
 
 /* WhatsApp icon bounce on group-hover */
 @keyframes wa-bounce {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  30%       { transform: scale(1.25) rotate(-12deg); }
-  60%       { transform: scale(0.95) rotate(6deg); }
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  30% {
+    transform: scale(1.25) rotate(-12deg);
+  }
+
+  60% {
+    transform: scale(0.95) rotate(6deg);
+  }
 }
+
 .btn-group:hover .wa-icon {
   animation: wa-bounce 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -63,6 +83,7 @@
 .btn-group:hover .arrow-icon {
   transform: translateX(4px);
 }
+
 .arrow-icon {
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -71,15 +92,24 @@
 .btn-group:hover .social-icon {
   transform: scale(1.18) rotate(-6deg);
 }
+
 .social-icon {
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Play button pulse ring */
 @keyframes play-ring {
-  0%   { transform: scale(1);   opacity: 0.7; }
-  100% { transform: scale(1.5); opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }
+
 .btn-play:hover::before {
   content: '';
   position: absolute;
@@ -88,4 +118,47 @@
   border: 2px solid currentColor;
   animation: play-ring 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
   pointer-events: none;
+}
+
+
+/* ─── Font Effect Nosso Chope ─────────────────────────────────────────── */
+
+.textBox__title2 {
+  font-weight: 900;
+  color: var(--color-white);
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  margin-bottom: 1.5rem;
+}
+
+.textBox__title2::before {
+  top: 5px;
+  left: 4px;
+  -webkit-text-stroke: 3px var(--color-black);
+}
+
+.textBox__title2::after {
+  top: 0px;
+  left: 0px;
+  -webkit-text-stroke: 5px var(--color-black);
+}
+
+.textBox__title2::before,
+.textBox__title2::after {
+  color: var(--color-black);
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+  text-transform: uppercase;
+}
+
+#a-galera.textBox__title2::before,
+#a-galera.textBox__title2::after {
+  content: "a galera!";
+}
+
+#nosso-jeito.textBox__title2::before,
+#nosso-jeito.textBox__title2::after {
+  content: "nosso jeito!";
 }

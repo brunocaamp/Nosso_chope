@@ -125,7 +125,7 @@ function ContentBox() {
 
 function Menu() {
   return (
-    <div className="[word-break:break-word] bg-[#f2f2f2] content-stretch drop-shadow-[0px_12px_8px_rgba(0,0,0,0.08),0px_4px_3px_rgba(0,0,0,0.03)] flex font-['Inter:Medium',sans-serif] font-medium gap-[32px] items-center justify-center leading-[19.5px] not-italic px-[40px] py-[20px] relative rounded-[40px] shrink-0 text-[#262626] text-[16px] whitespace-nowrap" data-name="menu">
+    <div className="[word-break:break-word] bg-[#f2f2f2] content-stretch shadow-[0px_12px_8px_rgba(0,0,0,0.08),0px_4px_3px_rgba(0,0,0,0.03)] flex font-['Inter:Medium',sans-serif] font-medium gap-[32px] items-center justify-center leading-[19.5px] not-italic px-[40px] py-[20px] relative rounded-[40px] shrink-0 text-[#262626] text-[16px] whitespace-nowrap" data-name="menu">
       <p className="relative shrink-0">Início</p>
       <p className="relative shrink-0">Produtos</p>
       <p className="relative shrink-0">Delivery</p>

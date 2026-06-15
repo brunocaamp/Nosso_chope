@@ -316,6 +316,7 @@ export function IconButton({
 /* ─── PlayButton — circular play button ────────────────────────────────── */
 
 interface PlayButtonProps {
+  children?: React.ReactNode;
   onClick?: () => void;
   size?: number;
   borderColor?: string;
@@ -323,6 +324,7 @@ interface PlayButtonProps {
 }
 
 export function PlayButton({
+  children,
   onClick,
   size = 124,
   borderColor = "white",
@@ -335,9 +337,9 @@ export function PlayButton({
       ref={ref as React.Ref<HTMLButtonElement>}
       onClick={(e) => { createRipple(e); onClick?.(); }}
       className={[
-        "relative inline-flex items-center justify-center bg-[#171717] rounded-full cursor-pointer pl-[0.5rem] ease-[cubic-bezier(0.34,1.56,0.64,1)]",
-        "transition-all duration-200 btn-play btn-ripple-container",
-        "hover:scale-[1.1] hover:shadow-[0_0_0_0.5rem_rgba(255,255,255,0.15)]",
+        "relative inline-flex items-center justify-center bg-[#171717]/80 backdrop-blur-sm rounded-full cursor-pointer ease-[cubic-bezier(0.34,1.56,0.64,1)]",
+        "transition-all duration-300 btn-play btn-ripple-container group",
+        "hover:scale-[1.1] hover:bg-[#171717] hover:shadow-[0_0_2rem_0_rgba(255,189,36,0.4)]",
         "active:scale-[0.95]",
         "focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2",
         className,
@@ -345,12 +347,20 @@ export function PlayButton({
       style={{
         width: `${size / 16}rem`,
         height: `${size / 16}rem`,
-        border: `0.25rem solid ${borderColor}`,
+        border: `0.15rem solid ${borderColor}`,
       }}
     >
-      {/* Outer ring pulse */}
+      {/* Interactive pulse effect behind button */}
+      <span className="absolute inset-0 rounded-full bg-white/20 animate-ping opacity-20 duration-1000" />
+      
+      {/* Icon */}
+      <span className="relative z-10 pl-[0.5rem] transition-transform duration-300 group-hover:scale-110">
+        {children}
+      </span>
+      
+      {/* Outer ring */}
       <span
-        className="absolute inset-0 rounded-full pointer-events-none"
+        className="absolute inset-[-0.5rem] rounded-full pointer-events-none border border-white/20 group-hover:border-white/40 transition-colors duration-300"
         aria-hidden
       />
     </button>

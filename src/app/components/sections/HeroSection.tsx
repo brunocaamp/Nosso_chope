@@ -1,6 +1,12 @@
+import React, { useState, useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 import svgPaths from "../../../imports/HeroSobre/svg-4z82zqaibu";
 import imgPrancheta32 from "figma:asset/6f63adec7cfe453cd371819abd4baadd4162da7a.png";
 import imgGarrafaPilsen1 from "figma:asset/f084f04b43690f8b1c6d50c95bdaf5b8476aaa2e.png";
+import imgGarrafRedDraft from "figma:asset/garrafa_hero.png";
 import { Navbar } from "../shared/Navbar";
 import { Button, WhatsAppAnimIcon, ArrowAnimIcon } from "../shared/Button";
 import { gridBase } from "../code/constants";
@@ -60,45 +66,132 @@ function HeroButtons() {
 
 /* ─── Hero Section ─────────────────────────────────────────────────────── */
 
+function useMagneticHover(maxMove = 30, baseTransform = "") {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = e.clientX - (rect.left + rect.width / 2);
+    const y = e.clientY - (rect.top + rect.height / 2);
+
+    const moveX = (x / rect.width) * maxMove;
+    const moveY = (y / rect.height) * maxMove;
+
+    setPosition({ x: moveX, y: moveY });
+  };
+
+  const handleMouseLeave = () => {
+    setPosition({ x: 0, y: 0 });
+  };
+
+  const transform = `translate3d(${position.x}px, ${position.y}px, 0) ${baseTransform}`.trim();
+
+  return {
+    ref,
+    onMouseMove: handleMouseMove,
+    onMouseLeave: handleMouseLeave,
+    style: {
+      transform,
+      transition: position.x === 0 && position.y === 0
+        ? "transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)"
+        : "transform 0.2s cubic-bezier(0.25, 1, 0.5, 1)",
+    }
+  };
+}
+
 export function HeroSection() {
+  const redBottleHover = useMagneticHover(35, "rotate(-15deg)");
+  const pilsenBottleHover = useMagneticHover(45);
+
+  const contentAnimRef = useRef<HTMLDivElement>(null);
+  const redBottleAnimRef = useRef<HTMLDivElement>(null);
+  const pilsenBottleAnimRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!contentAnimRef.current || !redBottleAnimRef.current || !pilsenBottleAnimRef.current) return;
+
+    // Content fade in from bottom with scale
+    gsap.fromTo(contentAnimRef.current,
+      { autoAlpha: 0, y: 100, scale: 0.6 },
+      {
+        autoAlpha: 1, y: 0, scale: 1, duration: 2, ease: "power3.out",
+        scrollTrigger: {
+          trigger: contentAnimRef.current,
+          start: "top 85%",
+        }
+      }
+    );
+
+    // Red Bottle: from top, almost out of screen, 10% overshoot
+    gsap.from(redBottleAnimRef.current, {
+      y: "-120vh",
+      duration: 1.8,
+      ease: "back.out(1.2)",
+      scrollTrigger: {
+        trigger: redBottleAnimRef.current,
+        start: "top 85%",
+      }
+    });
+
+    // Pilsen Bottle: from bottom, almost out of screen, 10% overshoot
+    gsap.from(pilsenBottleAnimRef.current, {
+      y: "60vh",
+      duration: 1.8,
+      ease: "back.out(1.2)",
+      scrollTrigger: {
+        trigger: pilsenBottleAnimRef.current,
+        start: "top 85%",
+      }
+    });
+  }, []);
+
   return (
     <div className="relative w-full">
       <section
-        className={`${gridBase} relative overflow-hidden items-center justify-center w-full min-h-[55rem] grid-rows-[auto] bg-gradient-to-b from-[#ffd324] to-[#e9a402]`}
+        className={`${gridBase} relative overflow-hidden w-full max-h-[55rem] grid-rows-[auto] bg-gradient-to-b from-[#ffd324] to-[#e9a402]`}
       >
         <Navbar variant="overlay" />
 
+
         <div
-          className="cols-[1_/_3]"
-        >
-          <div className="rotate-[-15.67deg] shrink-0">
-            <div className="relative w-[15.1779rem] h-[35.6797rem]">
-              <img alt="" src={imgPrancheta32} className=" inset-0 w-full h-full object-cover pointer-events-none" />
-            </div>
-          </div>
-        </div>
-        <div
-          className="col-[4_/_10] skew-y-[-3deg] flex flex-col gap-6 items-center"
+          ref={contentAnimRef}
+          className="col-[4_/_10] skew-y-[-3deg] flex flex-col gap-6 items-center z-[5] mt-[15rem]"
         >
           <TitleBox />
           <HeroButtons />
         </div>
 
         <div
-          className="absolute flex items-center justify-center pointer-events-none col-start-1 left-[-18rem] top-[14.8438rem] w-[47.8996rem] h-[56.9158rem]"
+          ref={redBottleAnimRef}
+          className="relative left-[-70rem] top-[-7rem] z-[0]"
         >
-          <div className="rotate-[-32.95deg] shrink-0">
-            <div className="w-[22.6169rem] h-[53.1673rem] blur-[0.46875rem] relative">
-              <img alt="" src={imgPrancheta32} className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
-            </div>
+          <div
+            ref={redBottleHover.ref}
+            onMouseMove={redBottleHover.onMouseMove}
+            onMouseLeave={redBottleHover.onMouseLeave}
+            style={redBottleHover.style}
+          >
+
+            <img alt="" src={imgGarrafRedDraft} className="max-w-[19rem] w-[18rem]" />
           </div>
         </div>
       </section >
 
       <div
-        className="absolute left-[73rem] top-[3rem] w-[42.1634rem] h-[67.1841rem] z-10"
+        ref={pilsenBottleAnimRef}
+        className="absolute left-[76rem] top-[3rem] w-[42.1634rem] h-[67.1841rem] z-10"
       >
-        <img alt="Nosso Chope Pilsen" src={imgGarrafaPilsen1} className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+        <div
+          ref={pilsenBottleHover.ref}
+          onMouseMove={pilsenBottleHover.onMouseMove}
+          onMouseLeave={pilsenBottleHover.onMouseLeave}
+          style={pilsenBottleHover.style}
+          className="w-full h-full"
+        >
+          <img alt="Nosso Chope Pilsen" src={imgGarrafaPilsen1} />
+        </div>
       </div>
     </div>
   );

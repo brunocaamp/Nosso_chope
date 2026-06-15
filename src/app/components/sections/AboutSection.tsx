@@ -2,6 +2,7 @@ import svgPaths from "../../../imports/HeroSobre/svg-4z82zqaibu";
 import imgRowImg21 from "figma:asset/09badca205a6c6d82552e03d3900a77bbbe54536.png";
 import { Button, WhatsAppAnimIcon } from "../shared/Button";
 import { gridBase } from "../code/constants";
+import { ScrollFadeIn } from "../animations/ScrollFadeIn";
 
 /* ─── Stars badge ──────────────────────────────────────────────────────── */
 
@@ -33,7 +34,7 @@ function StarsBadge() {
 
 function ImgBox() {
   return (
-    <div className="col-[1_/_7] row-[1_/_-1] overflow-hidden relative rounded-[1.5625rem]">
+    <div className="w-full h-full overflow-hidden relative rounded-[1.5625rem]">
       <img alt="bridando com como do nosso chope" src={imgRowImg21} />
     </div>
   );
@@ -43,14 +44,9 @@ function ImgBox() {
 
 function Heading() {
   return (
-    <div className="absolute whitespace-nowrap h-[3.7328rem] w-[32rem] top-[1.71875rem] left-0">
-      <p className="absolute font-['Montserrat',sans-serif] font-black text-[3.7325rem] leading-[3.7325rem] text-[#171717] left-[-0.1875rem] top-[0.21rem]">
-        NOSSO JEITO!
-      </p>
-      <p className="absolute font-['Montserrat',sans-serif] font-black text-[3.7325rem] leading-[3.7325rem] text-[#ffbd24] left-[-0.3125rem] top-[-0.04rem]">
-        NOSSO JEITO!
-      </p>
-    </div>
+    <p className="textBox__title2 font-['Montserrat',sans-serif]  text-[3.7325rem]/[7rem]" id="nosso-jeito">
+      NOSSO JEITO!
+    </p>
   );
 }
 
@@ -74,7 +70,7 @@ function TextParagraph() {
 
 function TextBox() {
   return (
-    <div className="col-[8_/_-1] row-[1_/_-1] relative shrink-0 h-[24.5rem] w-[35.5625rem]">
+    <div className="relative w-full h-full">
       <p className="absolute font-['Montserrat',sans-serif] font-medium whitespace-nowrap text-[#1a0e04] text-[2.375rem] leading-[1.21875rem] top-[-0.4625rem] left-[-0.3125rem] tracking-[0.0975rem]">
         Chope de verdade do
       </p>
@@ -89,11 +85,15 @@ function TextBox() {
 export function AboutSection() {
   return (
     <section className={`${gridBase} items-center justify-center w-full shrink-0 pt-[12.5rem] pb-[9.375rem]`}>
-      <ImgBox />
+      <ScrollFadeIn direction="left" className="col-[1_/_7] row-[1_/_-1]">
+        <ImgBox />
+      </ScrollFadeIn>
       <div className="col-[2_/_4] row-[1_/_-1] self-end relative bottom-[-1rem] rotate-[2.93deg] skew-x-[0.29deg]">
         <StarsBadge />
       </div>
-      <TextBox />
+      <ScrollFadeIn direction="right" className="col-[8_/_-1] row-[1_/_-1] shrink-0 h-[24.5rem] w-[35.5625rem]">
+        <TextBox />
+      </ScrollFadeIn>
     </section>
   );
 }
