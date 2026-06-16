@@ -30,18 +30,15 @@ function EventTitle() {
 export function DeliverySection() {
   return (
     <section
-      className="relative w-full overflow-hidden flex flex-col justify-center gap-[3.75rem] h-[61.6875rem] pt-[4.875rem] pb-[9.375rem]"
-    >
-      {/* Background image */}
-      <img
-        src={imgSectionDelivery}
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-      />
+      className={`${gridBase} relative w-full overflow-hidden h-[61.6875rem] pt-[4.875rem] pb-[9.375rem] bg-[image:var(--bg-image-desktop-lg)] bg-cover bg-center`}
+      style={{
+              '--bg-image-desktop-lg': `url(${imgSectionDelivery})`,
+            } as React.CSSProperties}>    
+      
 
       {/* Left content */}
       <div
-        className="relative flex flex-col gap-[2.75rem] items-start pl-[19.9375rem] z-10"
+        className="col-[1_/_span_6] row-[1_/_-1] relative flex flex-col gap-[2.75rem] items-start justify-center"
       >
         <EventTitle />
 
@@ -66,6 +63,14 @@ export function DeliverySection() {
             <WhatsAppAnimIcon fill="#FFBD24" />
             Peça Agora!
           </Button>
+          {/* Play button */}
+          <div className="z-[1] ml-[2rem]">
+            <PlayButton size={84} borderColor="#ffbd24">
+              <svg width="40" height="40" viewBox="0 0 54 54" fill="none">
+                <path d="M19 14L39 27L19 40V14Z" fill="#FFBD24" stroke="#FFBD24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </PlayButton>
+          </div>
         </div>
       </div>
 
@@ -80,14 +85,7 @@ export function DeliverySection() {
         />
       </div>
 
-      {/* Play button */}
-      <div className="absolute left-[47.1875rem] top-[39.8125rem] z-[1]">
-        <PlayButton size={84} borderColor="#ffbd24">
-          <svg width="40" height="40" viewBox="0 0 54 54" fill="none">
-            <path d="M19 14L39 27L19 40V14Z" fill="#FFBD24" stroke="#FFBD24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </PlayButton>
-      </div>
+      
     </section>
   );
 }

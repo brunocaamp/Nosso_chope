@@ -8,6 +8,8 @@ import { RedDraftSection } from "../components/sections/RedDraftSection";
 import { PartnersSection } from "../components/sections/PartnersSection";
 import { DeliverySection } from "../components/sections/DeliverySection";
 import { FooterSection } from "../components/sections/FooterSection";
+import { SectionSlideOver } from "../components/animations/SectionSlideOver";
+import { ScrollVideoReveal } from "../components/animations/ScrollVideoReveal";
 
 export function HomePage() {
   return (
@@ -16,6 +18,7 @@ export function HomePage() {
       <AboutSection />
       <CtaTagsSection />
       <PilsenSection />
+      <ScrollVideoReveal />
       <SocialProofSection />
       <RedDraftSection />
       <PartnersSection />

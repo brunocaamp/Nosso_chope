@@ -3,7 +3,6 @@ import img473Ml012 from "figma:asset/ff3127b4ddec9e40fab3d04ddd2b2a69c331f558.pn
 import imgGarrafaPilsen901 from "figma:asset/88c9bec97d353474e5a19f715f380cdaba1075e6.png";
 import { Button, WhatsAppAnimIcon } from "../shared/Button";
 import { gridBase } from "../code/constants";
-import { ScrollVideoReveal } from "../animations/ScrollVideoReveal";
 import { ScrollFadeIn } from "../animations/ScrollFadeIn";
 
 interface ProductCardProps {
@@ -151,6 +150,8 @@ function PilsenProductDetail() {
         <PilsenTextRight />
       </ScrollFadeIn>
 
+      <div className="w-full min-h-[19vh] absolute bottom-[-1rem] z-0 bg-[#ffbd24]"></div>
+
 
 
     </div>
@@ -159,7 +160,7 @@ function PilsenProductDetail() {
 
 function ProductsSubsection() {
   return (
-    <div className={`${gridBase} grid-rows-[auto_auto] relative w-full overflow-hidden pt-[18rem] pb-[15rem] bg-[#ffbd24] top-[-13rem] z-1 gap-6`}>
+    <div className={`${gridBase} grid-rows-[auto_auto] relative w-full overflow-hidden pt-[10rem] pb-[15rem] bg-[#ffbd24] z-1 gap-6`}>
       {/* Title area */}
       <div className="col-[1_/_8] row-[1_/_1]">
         <div className="flex flex-col space-y-[-1.0625rem]">
@@ -228,7 +229,6 @@ export function PilsenSection() {
     <section className="w-full overflow-hidden">
       <PilsenProductDetail />
       <ProductsSubsection />
-      <ScrollVideoReveal />
     </section>
   );
 }

@@ -150,7 +150,7 @@ export function HeroSection() {
   return (
     <div className="relative w-full">
       <section
-        className={`${gridBase} relative overflow-hidden w-full max-h-[55rem] grid-rows-[auto] bg-gradient-to-b from-[#ffd324] to-[#e9a402]`}
+        className={`${gridBase} relative z-0 overflow-hidden w-full max-h-[55rem] grid-rows-[auto] bg-gradient-to-b from-[#ffd324] to-[#e9a402]`}
       >
         <Navbar variant="overlay" />
 

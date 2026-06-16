@@ -33,37 +33,46 @@ export function ScrollVideoReveal() {
 
     const ctx = gsap.context(() => {
       let duration = video.duration || 10;
-      let pinStatus = true;
-      let endStatus = "+=200%";
-
 
       const initScrollTrigger = () => {
         duration = video.duration || 10;
         let isPlayingIndependently = false;
 
+        // Trigger 1: apenas o pin — ativa quando o topo da seção atinge o topo do viewport
         ScrollTrigger.create({
           trigger: containerRef.current,
           start: "top top",
-          end: endStatus,
-          pin: pinStatus,
+          end: "+=100%",
+          pin: true,
+          scrub: true,
+        });
+
+        // Trigger 2: apenas a animação — começa quando o fundo do viewport atinge 50% da seção.
+        // end "+=250%" = 50vh (antes do pin) + 200vh (duração do pin) = mesmo ponto final absoluto do Trigger 1.
+        ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: "top 65%",
+          end: "+=165%",
           scrub: true,
           onUpdate: (self) => {
-            // Se o vídeo já estiver tocando de forma independente, travamos a animação e ignoramos o scroll reverso
             if (isPlayingIndependently) return;
 
             const p = self.progress;
 
-            // 1. Scrub do vídeo (avança os primeiros 3 segundos de acordo com o scroll)
+            // 1. Scrub do vídeo de acordo com o scroll
             if (video && duration > 0) {
               const scrubDuration = Math.min(duration, 0);
               video.currentTime = p * scrubDuration;
             }
 
-            // 2. Expansão do clip-path (camada amarela sumindo)
+            // 2. Expansão do clip-path (camada amarela abrindo)
             const radius = p * 150;
-            gsap.set(".video-mask", { clipPath: `circle(${radius}% at 50% 50%)`, WebkitClipPath: `circle(${radius}% at 50% 50%)` });
+            gsap.set(".video-mask", {
+              clipPath: `circle(${radius}% at 50% 50%)`,
+              WebkitClipPath: `circle(${radius}% at 50% 50%)`,
+            });
 
-            // 3. Fade out do botão de play no final (a partir de 50% do scroll)
+            // 3. Fade out do botão de play no final do scroll
             if (playButtonRef.current) {
               if (p > 0.8) {
                 const op = 1 - ((p - 0.5) * 5);
@@ -75,14 +84,17 @@ export function ScrollVideoReveal() {
             }
           },
           onLeave: () => {
-            // Ao chegar no fim da animação via scroll, solta o vídeo pra tocar normalmente e trava a animação
+            // Ao chegar no fim via scroll, solta o vídeo pra tocar normalmente
             if (!isPlayingIndependently) {
               isPlayingIndependently = true;
-              setIsUnlocked(true)
+              setIsUnlocked(true);
               if (video) video.play().catch((e) => console.log("Autoplay prevented", e));
             }
-          }
+          },
         });
+
+        ScrollTrigger.sort();
+        ScrollTrigger.refresh();
 
         // Função para disparar o play manualmente ao clicar no botão
         playTriggerRef.current = () => {
@@ -113,7 +125,7 @@ export function ScrollVideoReveal() {
 
       return () => {
         video.removeEventListener("loadedmetadata", initScrollTrigger);
-      }
+      };
     }, containerRef);
 
     return () => {
@@ -122,7 +134,13 @@ export function ScrollVideoReveal() {
   }, [isUnlocked]);
 
   return (
-    <div className="relative w-full top-[-13rem] z-1" ref={containerRef}>
+    <div
+      ref={containerRef}
+      className={`w-full ${isUnlocked
+        ? "sticky top-0 z-[1]"
+        : "relative z-[1]"
+        }`}
+    >
       <div className="relative w-full h-screen overflow-hidden bg-[#ffbd24] flex items-center justify-center">
 
         <div

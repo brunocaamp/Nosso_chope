@@ -4,6 +4,8 @@ import { Button, InstagramAnimIcon } from "../shared/Button";
 import { gridBase } from "../code/constants";
 import { SocialCardsReveal } from "../animations/SocialCardsReveal";
 import videoChope1 from "../../../assets/nossochopevid1.mp4";
+import { ScrollFadeIn } from "../animations/ScrollFadeIn";
+
 
 /* ─── Cards de vídeo ───────────────────────────────────────────────────── */
 
@@ -23,12 +25,15 @@ const SOCIAL_CARDS = [
 function SocialTitle() {
   return (
     <div className="col-[1_/_-1] row-span-1 relative w-full flex flex-col items-center pt-[1.6875rem]">
-      <p
-        className="font-['Montserrat',sans-serif] font-black text-[#171717] uppercase tracking-[0.075rem] text-center text-[clamp(2rem,2.5vw,3rem)] leading-[1.33] w-[49.6875rem]"
-      >
-        é beber uma vez pra
-      </p>
-      <div
+      <ScrollFadeIn direction="left">
+        <p
+          className="font-['Montserrat',sans-serif] font-black text-[#171717] uppercase tracking-[0.075rem] text-center text-[clamp(2rem,2.5vw,3rem)] leading-[1.33] w-[49.6875rem]"
+        >
+          é beber uma vez pra
+        </p>
+      </ScrollFadeIn>
+
+      <ScrollFadeIn direction="right"
         className="relative bg-[#ffbd24] rounded-[0.625rem] px-[1.25rem] py-[1.25rem] mt-[0.5rem] rotate-[-1.48deg] skew-x-[0.29deg]"
       >
         <p
@@ -40,8 +45,8 @@ function SocialTitle() {
           className="absolute pointer-events-none rounded-[1.125rem] inset-[-0.5rem] border-[0.5rem] border-white"
           aria-hidden
         />
-      </div>
-      <div className="flex flex-col items-center mt-4 text-center w-[49.6875rem]">
+      </ScrollFadeIn>
+      <ScrollFadeIn direction="up" className="flex flex-col items-center mt-4 text-center w-[49.6875rem]">
         <p className="font-['Montserrat',sans-serif] font-normal text-[#171717] text-[1.125rem] leading-[1.56]">
           Quem prova uma vez nunca mais larga,{" "}
         </p>
@@ -49,14 +54,14 @@ function SocialTitle() {
           confira quem chega junto{" "}
           <strong className="font-bold">com o Nosso Chope.</strong>
         </p>
-      </div>
+      </ScrollFadeIn>
     </div>
   );
 }
 
 function TrajectoryBox() {
   return (
-    <div
+    <ScrollFadeIn direction="up"
       className="backdrop-blur-[0.375rem] flex gap-[2.125rem] items-start px-[1.25rem] py-[2.5rem] rounded-[1.25rem] bg-white/60 mt-[5rem] border border-[#f2f2f2]"
     >
       {/* Icon */}
@@ -75,33 +80,34 @@ function TrajectoryBox() {
           <p className="font-bold leading-[1.2]">nosso chope!</p>
         </div>
       </div>
-    </div>
+    </ScrollFadeIn>
   );
 }
 
 function CansBanner() {
   return (
-
-    <img src={imgLatas11} alt="Latas Nosso Chope" className="col-[1_/_span_9] row-[1_/_-1]" />
-
+    <ScrollFadeIn direction="left" className="col-[1_/_span_9] row-[1_/_-1]" >
+      <img src={imgLatas11} alt="Latas Nosso Chope" />
+    </ScrollFadeIn>
   );
 }
 
 function FloatingLabels() {
   return (
     <>
+      <ScrollFadeIn direction="up">
+        <p
+          className="bg-[#171717] rotate-[-7deg] skew-x-[-7deg] font-['Montserrat',sans-serif] font-medium text-white uppercase tracking-[0.075rem] px-[1.875rem] py-[0.625rem] rounded-[0.625rem]  whitespace-nowrap text-[clamp(2.5rem,4.06vw,4.875rem)]/[clamp(2.5rem,4.06vw,4.875rem)] leading-[1.1] shadow-[0.0625rem_0.0625rem_0px_0px_black]"
+        >
+          é tudo
+        </p>
 
-      <p
-        className="bg-[#171717] rotate-[-7deg] skew-x-[-7deg] font-['Montserrat',sans-serif] font-medium text-white uppercase tracking-[0.075rem] px-[1.875rem] py-[0.625rem] rounded-[0.625rem]  whitespace-nowrap text-[clamp(2.5rem,4.06vw,4.875rem)]/[clamp(2.5rem,4.06vw,4.875rem)] leading-[1.1] shadow-[0.0625rem_0.0625rem_0px_0px_black]"
-      >
-        é tudo
-      </p>
-
-      <p
-        className="mt-[-1.3rem] ml-[3rem] bg-[#ffbd24] shadow-[0.25rem_0.25rem_0px_0px_black] px-[1.875rem] py-[0.625rem] rounded-[0.625rem] rotate-[-7deg] skew-x-[-7deg] font-['Montserrat',sans-serif] font-black text-black uppercase tracking-[0.075rem] whitespace-nowrap text-[clamp(2.5rem,4.06vw,4.875rem)]/[clamp(2.5rem,4.06vw,4.875rem)] "
-      >
-        nosso!
-      </p>
+        <p
+          className="mt-[-1.3rem] ml-[3rem] bg-[#ffbd24] shadow-[0.25rem_0.25rem_0px_0px_black] px-[1.875rem] py-[0.625rem] rounded-[0.625rem] rotate-[-7deg] skew-x-[-7deg] font-['Montserrat',sans-serif] font-black text-black uppercase tracking-[0.075rem] whitespace-nowrap text-[clamp(2.5rem,4.06vw,4.875rem)]/[clamp(2.5rem,4.06vw,4.875rem)] "
+        >
+          nosso!
+        </p>
+      </ScrollFadeIn>
 
 
     </>
@@ -110,21 +116,21 @@ function FloatingLabels() {
 
 function InstagramButton() {
   return (
-    <div
+    <ScrollFadeIn direction="up"
       className="col-[1_/_-1] row-span-1 flex items-center justify-center"
     >
-      <Button variant="instagram-cta" className="gap-[0.9375rem] py-[0.9375rem]">
+      <a href="https://www.instagram.com/nossochope/"><Button variant="instagram-cta" className="gap-[0.9375rem] py-[0.9375rem]">
         <InstagramAnimIcon stroke="#F9CC0A" />
         Veja mais no nosso Instagram!
-      </Button>
-    </div>
+      </Button></a>
+    </ScrollFadeIn>
   );
 }
 
 export function SocialProofSection() {
   return (
     <section
-      className={`${gridBase} relative w-full overflow-hidden bg-gradient-to-b from-white to-[#f2f2f2] pb-[11.25rem] `}
+      className={`${gridBase} relative w-full overflow-hidden bg-gradient-to-b from-white to-[#f2f2f2] py-[11.25rem] `}
     >
 
       <SocialTitle />
