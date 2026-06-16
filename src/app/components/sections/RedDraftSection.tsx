@@ -136,42 +136,34 @@ function RedDraftDetail() {
     <div
       className={`${gridBase} py-[8rem] items-center  justify-center w-full overflow-hidden relative bg-gradient-to-b from-[#822d81] to-[#471046] h-[76.9375rem]`}
     >
-      <div className="col-[1_/_7] row-[1_/_-1] relative">
+      <div className="col-[1_/_8] row-[1_/_-1] relative grid grid-cols-12">
         {/* Decorative icons */}
         <div
-          className="absolute pointer-events-none left-[12.5625rem] top-[2.875rem] right-0 bottom-[32%]"
+          className="col-[1_/_span_8] row-[1_/_-1] ml-[-3rem] max-h-[30rem] mt-[4rem] rotate-[-30.55deg]"
         >
-          <div
-            className="absolute left-[12.5625rem] top-[2.875rem] w-[18.75rem] h-[31.25rem] rotate-[-30.55deg]"
-          >
-            <IconReddraftCevada />
-          </div>
-          <div
-            className="absolute left-[35.875rem] top-[29.6875rem] w-[29.5rem] h-[33.0625rem] rotate-[62.77deg]"
-          >
-            <IconReddraftGrape />
-          </div>
+          <IconReddraftCevada />
+        </div>
+        <div
+          className="col-[4_/_-1] row-[1_/_-1] ml-[0rem] mt-[17rem] max-h-[36rem] rotate-[62.77deg]"
+        >
+          <IconReddraftGrape />
         </div>
 
         {/* Main Red Draft bottle */}
-        <div
-          className="absolute pointer-events-none left-1/2 -translate-x-[12.5rem] top-[2.875rem] w-[17.4375rem] h-[57.8125rem] "
-        >
-          <img src={imgReddraft600Ml1} alt="Red Draft 600ml" className="w-[17.4375rem] h-[57.8125rem] rotate-[12deg] [filter:drop-shadow(0.25rem_0.25rem_1.5rem_rgba(0,0,0,0.35))_drop-shadow(1.25rem_1.5rem_2.75rem_rgba(0,0,0,0.25))]" />
-        </div>
+
+        <img src={imgReddraft600Ml1} alt="Red Draft 600ml" className="col-[5_/_-1] row-[1_/_-1] ml-[2rem] mt-[-4rem] max-h-[51rem] rotate-[12deg] [filter:drop-shadow(0.25rem_0.25rem_1.5rem_rgba(0,0,0,0.35))_drop-shadow(1.25rem_1.5rem_2.75rem_rgba(0,0,0,0.25))]" />
+
 
         {/* Pilsen bottle behind */}
-        <div
-          className="absolute pointer-events-none left-[18.25rem] top-[29.375rem] w-[16.6875rem] h-[39.25rem] rotate-[-16.8deg] shadow-[0.375rem_0.375rem_0.5625rem_0_rgba(0,0,0,0.45),_1.25rem_0.875rem_2.125rem_0_rgba(0,0,0,0.35)]"
-        >
-          <img src={imgPrancheta32} alt="" className="absolute inset-0 w-full h-full object-cover" />
-        </div>
+
+        <img src={imgPrancheta32} alt="" className="col-[2_/_7] row-[1_/_-1] ml-[1rem] mt-[21rem] rotate-[-16.8deg] max-h-[33rem] [filter:drop-shadow(0.25rem_0.25rem_1.5rem_rgba(0,0,0,0.35))_drop-shadow(1.25rem_1.5rem_2.75rem_rgba(0,0,0,0.25))]" />
+
       </div>
 
 
       {/* Text content right */}
       <div
-        className="col-[8_/_12] flex flex-col gap-[2.1875rem] items-start row-[1_/_-1]"
+        className="col-[7_/_12] flex flex-col gap-[2.1875rem] items-start row-[1_/_-1]"
       >
         {/* Title */}
         <div className="flex flex-col items-start">
