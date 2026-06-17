@@ -97,7 +97,7 @@ function PilsenHeading() {
 
 function PilsenTextRight() {
   return (
-    <div className="flex flex-col gap-[0.875rem] items-start w-[26.375rem]">
+    <div className="flex flex-col gap-[0.875rem] items-start- w-[26.375rem]">
       <p
         className="font-['Montserrat',sans-serif] font-extrabold text-[#4a3728] leading-[1.47] text-[clamp(0.875rem,0.99vw,1.1875rem)]"
       >
@@ -123,8 +123,8 @@ function PilsenProductDetail() {
     <div className={`${gridBase} relative w-full overflow-hidden min-h-[50rem] pt-[3.125rem] z-2`}>
 
       {/* Heading left */}
-      <ScrollParallax speed={-5} className="col-[1_/_7] row-[1_/_-1] z-10">
-        <ScrollFadeIn direction="up" className="mt-[4rem] ">
+      <ScrollParallax speed={-8} className="col-[1_/_7] row-[1_/_-1] z-10">
+        <ScrollFadeIn direction="up" className="mt-[7rem] ">
           <PilsenHeading />
         </ScrollFadeIn>
       </ScrollParallax>
@@ -140,8 +140,8 @@ function PilsenProductDetail() {
       </ScrollFadeIn>
 
       {/* Dashed pointer line */}
-      <ScrollParallax speed={-5} className="col-[7_/_span_3] row-[1_/_-1] z-0">
-        <ScrollFadeIn direction="up" delay={0.6} className="mt-[4rem] ml-[4rem]">
+      <ScrollParallax speed={-8} className="col-[7_/_span_3] row-[1_/_-1] z-0">
+        <ScrollFadeIn direction="up" delay={0.6} className="mt-[7rem] ml-[4rem]">
           <svg width="157" height="23" viewBox="0 0 157.277 22.4682" fill="none">
             <line stroke="#737373" strokeDasharray="2 2" x2="146.043" y1="10.734" y2="10.734" />
             <ellipse cx="146.043" cy="11.234" fill="#FFBD24" rx="11.234" ry="11.234" />
@@ -150,11 +150,11 @@ function PilsenProductDetail() {
       </ScrollParallax>
 
       {/* Text right */}
-      <ScrollFadeIn speed={-5} className="col-[9_/-1] row-[1_/_-1]">
-        <ScrollFadeIn direction="up" delay={0.6} className=" mt-[4rem]">
+      <ScrollParallax speed={-8} className="col-[9_/-1] row-[1_/_-1]">
+        <ScrollFadeIn direction="up" delay={0.6} className=" mt-[7rem]">
           <PilsenTextRight />
         </ScrollFadeIn>
-      </ScrollFadeIn>
+      </ScrollParallax>
 
       <div className="w-full min-h-[19vh] absolute bottom-[-1rem] z-0 bg-[#ffbd24]"></div>
 
@@ -166,16 +166,16 @@ function PilsenProductDetail() {
 
 function ProductsSubsection() {
   return (
-    <div className={`${gridBase} grid-rows-[auto_auto] relative w-full overflow-hidden pt-[10rem] pb-[15rem] bg-[#ffbd24] z-1 gap-6`}>
+    <div className={`${gridBase} grid-rows-[auto_auto] relative w-full overflow-hidden pt-[10rem] bg-[#ffbd24] z-1 gap-6`}>
       {/* Title area */}
       <div className="col-[1_/_8] row-[1_/_1]">
-        <div className="flex flex-col space-y-[-1.0625rem]">
+        <div className="flex flex-col space-y-[-1.0625rem] items-start">
           <p
             className="font-['Montserrat',sans-serif] font-black text-white uppercase tracking-[0.075rem] text-[clamp(2.5rem,3.75vw,4.5rem)] leading-[1.33] w-[44.375rem]"
           >
             Mais opções, mais sabor
           </p>
-          <div className="rotate-[-2.32deg] skew-x-[0.29deg] inline-block">
+          <div className="rotate-[-2.32deg] skew-x-[0.29deg]">
             <div className="relative bg-[#fafafa] rounded-[0.625rem] px-[1.25rem] py-[1.5rem] ">
               <p
                 className="font-['Montserrat',sans-serif] font-black text-[#171717] uppercase tracking-[0.0625rem] whitespace-nowrap text-[clamp(2.5rem,3.75vw,4.5rem)] leading-none"
@@ -192,47 +192,47 @@ function ProductsSubsection() {
       </div>
 
       {/* Product cards */}
-      <div
-        className="col-[1_/_12] row-[2_/_2] flex items-center gap-[3.125rem] "
+      <ScrollParallax speed={15}
+        className="col-[1_/_12] row-[2_/_2] flex items-center gap-[3.125rem] mt-[-4rem]"
       >
-        <ScrollFadeIn direction="up" delay={0.2}>
-          <ProductCard
-            image={imgLongNeckGarrafaBranca1}
-            imageWidth={127}
-            imageHeight={358}
-            imageAlt="Long Neck Garrafa Branca"
-            title="Lager Premium"
-            subtitle="Long Neck 473ml"
-          />
-        </ScrollFadeIn>
-        <ScrollFadeIn direction="up" delay={0.4}>
-          <ProductCard
-            image={img473Ml012}
-            imageWidth={173}
-            imageHeight={359}
-            imageAlt="Lata 350ml"
-            title="puro malte"
-            subtitle="lata 350ml"
-          />
-        </ScrollFadeIn>
-        <ScrollFadeIn direction="up" delay={0.6}>
-          <ProductCard
-            image={imgGarrafaPilsen901}
-            imageWidth={162}
-            imageHeight={357}
-            imageAlt="PET 1.5L"
-            title="puro malte"
-            subtitle="pet 1,5l"
-          />
-        </ScrollFadeIn>
-      </div>
-    </div>
+        {/* <ScrollFadeIn direction="up" delay={0.2}> */}
+        <ProductCard
+          image={imgLongNeckGarrafaBranca1}
+          imageWidth={127}
+          imageHeight={358}
+          imageAlt="Long Neck Garrafa Branca"
+          title="Lager Premium"
+          subtitle="Long Neck 473ml"
+        />
+        {/* </ScrollFadeIn> */}
+        {/* <ScrollFadeIn direction="up" delay={0.4}> */}
+        <ProductCard
+          image={img473Ml012}
+          imageWidth={173}
+          imageHeight={359}
+          imageAlt="Lata 350ml"
+          title="puro malte"
+          subtitle="lata 350ml"
+        />
+        {/* </ScrollFadeIn> */}
+        {/* <ScrollFadeIn direction="up" delay={0.6}> */}
+        <ProductCard
+          image={imgGarrafaPilsen901}
+          imageWidth={162}
+          imageHeight={357}
+          imageAlt="PET 1.5L"
+          title="puro malte"
+          subtitle="pet 1,5l"
+        />
+        {/* </ScrollFadeIn> */}
+      </ScrollParallax>
+    </div >
   );
 }
 
 export function PilsenSection() {
   return (
-    <section className="w-full overflow-hidden">
+    <section id="pilsen" className="w-full overflow-hidden">
       <PilsenProductDetail />
       <ProductsSubsection />
     </section>

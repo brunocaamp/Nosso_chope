@@ -54,12 +54,12 @@ export function CtaTagsSection() {
     if (!containerRef.current) return;
 
     gsap.to(containerRef.current, {
-      scale: 0.8,
-      filter: "blur(10px)",
+      scale: 0.5,
+      // filter: "blur(0px)",
       ease: "none",
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "10% top", // When top of viewport is 10% below top of the div
+        start: "top 40%", // When top of viewport is 10% below top of the div
         end: "bottom top", // Until scroll reaches the end of the div
         scrub: true,
       }
@@ -67,9 +67,9 @@ export function CtaTagsSection() {
   }, []);
 
   return (
-    <section className={`${gridBase} w-full py-[3.125rem] pb-[9.375rem] overflow-hidden`}>
+    <section className={`${gridBase} w-full py-[3.125rem] pb-[5rem] overflow-hidden`}>
       <div ref={containerRef} className="col-[1_/_-1] flex flex-col items-center space-y-[-1.0625rem] origin-center">
-        
+
         <ScrollFadeIn direction="left">
           <TagBox
             text="SABOR"

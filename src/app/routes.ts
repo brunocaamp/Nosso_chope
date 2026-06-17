@@ -3,6 +3,8 @@ import { Root } from "./Root";
 import { gridBase } from "./components/code/constants";
 import { HomePage } from "./pages/HomePage";
 import { ContactPage } from "./pages/ContactPage";
+import { PartnerPage } from "./pages/PartnerPage";
+
 
 export const router = createBrowserRouter([
   {
@@ -11,6 +13,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: HomePage },
       { path: "contato", Component: ContactPage },
+      { path: "parceiros", Component: PartnerPage },
     ],
   },
 ]);

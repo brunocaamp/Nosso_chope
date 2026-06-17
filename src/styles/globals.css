@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 /* ─── Button micro-interactions ─────────────────────────────────────────── */
 
 /* Shimmer sweep on hover — used on yellow/primary buttons */

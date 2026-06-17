@@ -18,29 +18,6 @@ function SocialHashtag() {
       >
         #étudonosso
       </p>
-      <div className="flex items-center gap-3 mt-10">
-        <IconButton
-          size={54}
-          bg="rgba(255,255,255,0.15)"
-          shadow="hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
-        >
-          <FooterInstagramIcon stroke="#624E00" size={26} />
-        </IconButton>
-        <IconButton
-          size={54}
-          bg="rgba(255,255,255,0.15)"
-          shadow="hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
-        >
-          <FooterFacebookIcon stroke="#624E00" size={26} />
-        </IconButton>
-        <IconButton
-          size={54}
-          bg="rgba(255,255,255,0.15)"
-          shadow="hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
-        >
-          <FooterTwitterIcon stroke="#624E00" size={26} />
-        </IconButton>
-      </div>
     </div>
   );
 }
@@ -96,6 +73,29 @@ function ContactInfo() {
           <p className="font-['Montserrat',sans-serif] font-normal text-[#171717] text-[0.8125rem] whitespace-nowrap">
             contato@nossochope.com.br
           </p>
+        </div>
+        <div className="flex items-center gap-3 mt-2">
+          <IconButton
+            size={54}
+            bg="rgba(255,255,255,0.15)"
+            shadow="hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
+          >
+            <FooterInstagramIcon stroke="#624E00" size={26} />
+          </IconButton>
+          <IconButton
+            size={54}
+            bg="rgba(255,255,255,0.15)"
+            shadow="hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
+          >
+            <FooterFacebookIcon stroke="#624E00" size={26} />
+          </IconButton>
+          <IconButton
+            size={54}
+            bg="rgba(255,255,255,0.15)"
+            shadow="hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
+          >
+            <FooterTwitterIcon stroke="#624E00" size={26} />
+          </IconButton>
         </div>
       </div>
     </div>
@@ -154,7 +154,7 @@ function FooterContent() {
 
       {/* Decorative bottle in motion */}
       <div
-        className="absolute pointer-events-none left-[15.75rem] top-[4.3125rem] w-[69.1875rem] h-[85rem] rotate-[-9.38deg] opacity-85"
+        className="absolute pointer-events-none left-[13.75rem] top-[4.3125rem] w-[69.1875rem] h-[85rem] rotate-[-9.38deg] opacity-85 z-60"
       >
         <img
           src={img473Ml02Movimento11}
@@ -169,7 +169,7 @@ function FooterContent() {
 export function FooterSection() {
   return (
     <footer
-      className="relative w-full overflow-hidden bg-gradient-to-b from-[#ffd324] to-[#e9a402] min-h-[54.6875rem]"
+      className="relative w-full overflow-hidden bg-gradient-to-b from-[#ffd324] to-[#e9a402] min-h-[54.6875rem] z-50"
     >
       <FooterContent />
     </footer>

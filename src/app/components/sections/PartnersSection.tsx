@@ -4,6 +4,7 @@ import imgImage5 from "figma:asset/b3200e5bdec36f9c3876a5facc8a13c6cbf8df27.png"
 import imgAssaiLogo from "figma:asset/0dc0127cfe32b13e632cd33260374726629b23d8.png";
 import { LocationIcon, ArrowRightIcon } from "../shared/icons";
 import { Button, ArrowAnimIcon, SmallButton } from "../shared/Button";
+import { ScrollFadeIn } from "../animations/ScrollFadeIn";
 
 /* ═══════════════════════════════════════════════════════════════════════════
    Types
@@ -309,7 +310,7 @@ export function PartnersSection() {
       "
     >
       {/* ── Title ─────────────────────────────────────────────────── */}
-      <div className="flex flex-col items-center text-center gap-[0.875rem] max-w-[52rem] px-8">
+      <ScrollFadeIn direction="up" delay={0.1} distance={100} className="flex flex-col items-center text-center gap-[0.875rem] max-w-[52rem] px-8">
         <p
           className="
             font-['Montserrat',sans-serif] font-extrabold text-[#1a0e04]
@@ -327,7 +328,7 @@ export function PartnersSection() {
         >
           Encontre o nosso chope nos melhores mercados e estabelecimento!
         </p>
-      </div>
+      </ScrollFadeIn>
 
       {/* ── Carousel wrapper ──────────────────────────────────────── */}
       {/*
@@ -335,83 +336,85 @@ export function PartnersSection() {
         derived from the CSS custom property viewport so the track overflows
         exactly into hidden territory on both sides.
       */}
-      <div
-        className="relative w-full"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => { setIsHovered(false); if (isDragging) onPointerUp(); }}
-      >
-        {/* 3-card viewport — hard clip horizontally */}
+      <ScrollFadeIn direction="up" delay={0.2} distance={120} className="w-full">
         <div
-          className="overflow-hidden mx-auto py-4"
-          style={{ width: `${viewportW}rem` }}
+          className="relative w-full"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => { setIsHovered(false); if (isDragging) onPointerUp(); }}
         >
-          {/* Sliding track — starts before the viewport (accounts for clones) */}
+          {/* 3-card viewport — hard clip horizontally */}
           <div
-            className="flex select-none will-change-transform"
-            style={{
-              gap: `${GAP}rem`,
-              // Shift track left by REAL_START cards to start at the first real item
-              transform: `translateX(${translateRem}rem)`,
-              transition: !animated || isDragging
-                ? "none"
-                : "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
-              cursor: isDragging ? "grabbing" : "grab",
-              touchAction: "pan-y",
-            }}
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerUp}
-            onTransitionEnd={onTransitionEnd}
+            className="overflow-hidden mx-auto py-4"
+            style={{ width: `${viewportW}rem` }}
           >
-            {extendedPartners.map((partner, i) => (
-              <PartnerCard key={i} {...partner} />
-            ))}
+            {/* Sliding track — starts before the viewport (accounts for clones) */}
+            <div
+              className="flex select-none will-change-transform"
+              style={{
+                gap: `${GAP}rem`,
+                // Shift track left by REAL_START cards to start at the first real item
+                transform: `translateX(${translateRem}rem)`,
+                transition: !animated || isDragging
+                  ? "none"
+                  : "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+                cursor: isDragging ? "grabbing" : "grab",
+                touchAction: "pan-y",
+              }}
+              onPointerDown={onPointerDown}
+              onPointerMove={onPointerMove}
+              onPointerUp={onPointerUp}
+              onTransitionEnd={onTransitionEnd}
+            >
+              {extendedPartners.map((partner, i) => (
+                <PartnerCard key={i} {...partner} />
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Navigation arrows — positioned relative to the full-width wrapper */}
-        <button
-          onClick={() => { goPrev(); startTimer(); }}
-          aria-label="Anterior"
-          className="
-            absolute left-[calc(50%-${viewportW/2}rem-4rem)]
-            top-1/2 -translate-y-1/2 z-30
-            flex items-center justify-center w-12 h-12
-            rounded-full bg-white/90 backdrop-blur-sm
-            border border-[#f2f2f2]
-            shadow-[0_0.25rem_1rem_rgba(0,0,0,0.12)]
-            transition-all duration-200
-            hover:bg-[#f9cc0a] hover:border-[#f9cc0a] hover:scale-110
-            active:scale-95
-          "
-          style={{ left: `calc(50% - ${viewportW / 2}rem - 3.5rem)` }}
-        >
-          <span className="rotate-180 flex">
+          {/* Navigation arrows — positioned relative to the full-width wrapper */}
+          <button
+            onClick={() => { goPrev(); startTimer(); }}
+            aria-label="Anterior"
+            className="
+              absolute left-[calc(50%-${viewportW/2}rem-4rem)]
+              top-1/2 -translate-y-1/2 z-30
+              flex items-center justify-center w-12 h-12
+              rounded-full bg-white/90 backdrop-blur-sm
+              border border-[#f2f2f2]
+              shadow-[0_0.25rem_1rem_rgba(0,0,0,0.12)]
+              transition-all duration-200
+              hover:bg-[#f9cc0a] hover:border-[#f9cc0a] hover:scale-110
+              active:scale-95
+            "
+            style={{ left: `calc(50% - ${viewportW / 2}rem - 3.5rem)` }}
+          >
+            <span className="rotate-180 flex">
+              <ArrowRightIcon stroke="#1a0e04" size={16} />
+            </span>
+          </button>
+
+          <button
+            onClick={() => { goNext(); startTimer(); }}
+            aria-label="Próximo"
+            className="
+              absolute top-1/2 -translate-y-1/2 z-30
+              flex items-center justify-center w-12 h-12
+              rounded-full bg-white/90 backdrop-blur-sm
+              border border-[#f2f2f2]
+              shadow-[0_0.25rem_1rem_rgba(0,0,0,0.12)]
+              transition-all duration-200
+              hover:bg-[#f9cc0a] hover:border-[#f9cc0a] hover:scale-110
+              active:scale-95
+            "
+            style={{ left: `calc(50% + ${viewportW / 2}rem + 0.5rem)` }}
+          >
             <ArrowRightIcon stroke="#1a0e04" size={16} />
-          </span>
-        </button>
-
-        <button
-          onClick={() => { goNext(); startTimer(); }}
-          aria-label="Próximo"
-          className="
-            absolute top-1/2 -translate-y-1/2 z-30
-            flex items-center justify-center w-12 h-12
-            rounded-full bg-white/90 backdrop-blur-sm
-            border border-[#f2f2f2]
-            shadow-[0_0.25rem_1rem_rgba(0,0,0,0.12)]
-            transition-all duration-200
-            hover:bg-[#f9cc0a] hover:border-[#f9cc0a] hover:scale-110
-            active:scale-95
-          "
-          style={{ left: `calc(50% + ${viewportW / 2}rem + 0.5rem)` }}
-        >
-          <ArrowRightIcon stroke="#1a0e04" size={16} />
-        </button>
-      </div>
+          </button>
+        </div>
+      </ScrollFadeIn>
 
       {/* ── Slider ────────────────────────────────────────────────── */}
-      <div className="flex flex-col items-center gap-4 w-full max-w-[32rem] px-8">
+      <ScrollFadeIn direction="up" delay={0.3} distance={50} className="flex flex-col items-center gap-4 w-full max-w-[32rem] px-8">
         {/* Progress bar */}
         <div className="relative w-full h-[3px] bg-[#e8e0d8] rounded-full overflow-hidden">
           <div
@@ -439,10 +442,10 @@ export function PartnersSection() {
             />
           ))}
         </div>
-      </div>
+      </ScrollFadeIn>
 
       {/* ── Bottom CTA ────────────────────────────────────────────── */}
-      <div className="flex items-center justify-center gap-[2.75rem] px-8 max-w-[72rem]">
+      <ScrollFadeIn direction="up" delay={0.4} distance={50} className="flex items-center justify-center gap-[2.75rem] px-8 max-w-[72rem]">
         <div className="flex flex-col gap-[0.3125rem] text-center">
           <p
             className="
@@ -472,7 +475,7 @@ export function PartnersSection() {
             Saiba Mais
           </Button>
         </div>
-      </div>
+      </ScrollFadeIn>
 
       {/* ── Shine-sweep pseudo-element ─────────────────────────────── */}
       <style>{`

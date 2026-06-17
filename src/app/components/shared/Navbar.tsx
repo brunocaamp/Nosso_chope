@@ -51,7 +51,8 @@ function FacebookIcon() {
 
 const NAV_LINKS = [
   { label: "Início", href: "/" },
-  { label: "Produtos", href: "/#produtos" },
+  { label: "Produtos", href: "/#pilsen" },
+  { label: "Seja um Parceiro", href: "/parceiros" },
   { label: "Delivery", href: "/#delivery" },
   { label: "Contato", href: "/contato" },
 ];

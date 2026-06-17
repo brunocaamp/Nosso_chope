@@ -16,9 +16,9 @@ interface ScrollFadeInProps {
 export function ScrollFadeIn({
   children,
   direction = "none",
-  delay = 0.4,
-  duration = 0.8,
-  distance = 230,
+  delay = 0.2,
+  duration = 1,
+  distance = 200,
   className = "",
 }: ScrollFadeInProps) {
   const elementRef = useRef<HTMLDivElement>(null);
@@ -54,7 +54,7 @@ export function ScrollFadeIn({
     const tl = gsap.to(el, {
       scrollTrigger: {
         trigger: el,
-        start: "top 94%", // Dispara quando o topo do elemento atinge 85% da altura da viewport
+        start: "top 95%", // Dispara quando o topo do elemento atinge 85% da altura da viewport
         toggleActions: "play none none none",
       },
       autoAlpha: 1,
