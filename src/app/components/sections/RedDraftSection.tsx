@@ -102,41 +102,68 @@ function RedDraftHero() {
     <div
       className={`${gridBase} relative w-full overflow-hidden h-[61.25rem]`}>
 
-      <ScrollParallax speed={-10} className="absolute inset-0 z-1 w-full h-full">
+      <ScrollParallax speed={-50} className="absolute inset-0 z-1 w-full h-full">
         <img src={imgRedDraft1} alt="Jovem mulher segurando uma lata de Nosso Chope RedDraft."
           className="object-cover scale-[1.15]" />
       </ScrollParallax>
 
-      <ScrollParallax speed={20} className="col-[2_/_6] row-[1_/_-1] flex items-center z-2">
+      <ScrollParallax speed={10} className="col-[2_/_6] row-[1_/_-1] flex items-center z-2">
         <RedDraftBranding />
       </ScrollParallax>
     </div>
   );
 }
 
+function SizeCard({ label, volume, unit, icon }: { label: string; volume: string; unit: string; icon: React.ReactNode }) {
+  return (
+    <div className="flex-1 flex flex-col items-center gap-[0.625rem] px-[1.25rem] py-[1.125rem] rounded-[0.75rem] bg-white/10 border border-white/20 backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:scale-[1.03] cursor-default group">
+      {/* Icon */}
+      <div className="text-[#f2f2f2]/70 group-hover:text-[#f2f2f2] transition-colors duration-300">
+        {icon}
+      </div>
+      {/* Volume */}
+      <p className="font-['Montserrat',sans-serif] font-extrabold text-white tracking-tight leading-none">
+        <span className="text-[clamp(2rem,3.02vw,3.25rem)]">{volume}</span>
+        <span className="text-[clamp(1rem,1.5vw,1.5rem)] opacity-80 ml-[0.2rem]">{unit}</span>
+      </p>
+      {/* Label pill */}
+      <span className="inline-flex items-center justify-center px-[0.875rem] py-[0.3rem] rounded-full bg-[#c4217e]/80 border border-[#c4217e] font-['Montserrat',sans-serif] font-semibold uppercase tracking-[0.08rem] text-white text-[0.7rem] leading-none whitespace-nowrap">
+        {label}
+      </span>
+    </div>
+  );
+}
+
 function SizesBox() {
   return (
-    <div className="bg-[#f2f2f2] flex items-center gap-[2rem] p-[1.875rem] rounded-[0.9375rem]">
-      <div className="text-[#822d81] tracking-[0.075rem] whitespace-nowrap">
-        <p className="font-['Montserrat',sans-serif] font-medium uppercase text-[1.5rem] leading-none">Lata</p>
-        <p className="font-['Montserrat',sans-serif] font-extrabold leading-none">
-          <span className="text-[clamp(2rem,3.02vw,3.625rem)]">310</span>
-          <span className="text-[clamp(1.5rem,1.98vw,2.375rem)]">ml</span>
-        </p>
-      </div>
+    <div className="flex items-stretch gap-[0.875rem] w-full">
+      <SizeCard
+        label="Lata"
+        volume="310"
+        unit="ml"
+        icon={
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="4" width="12" height="20" rx="3" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+            <rect x="10" y="2" width="8" height="3" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
+            <line x1="8" y1="10" x2="20" y2="10" stroke="currentColor" strokeWidth="1.5"/>
+          </svg>
+        }
+      />
       {/* Divider */}
-      <div className="flex items-center justify-center w-0 h-[3.125rem]">
-        <svg width="1" height="50" viewBox="0 0 1 50" fill="none">
-          <line x1="0.5" y1="0" x2="0.5" y2="50" stroke="#822D81" />
-        </svg>
+      <div className="flex items-center self-stretch">
+        <div className="w-px h-full bg-white/20 rounded-full" />
       </div>
-      <div className="text-[#822d81] tracking-[0.075rem] whitespace-nowrap">
-        <p className="font-['Montserrat',sans-serif] font-medium uppercase text-[1.5rem] leading-none">garrafa</p>
-        <p className="font-['Montserrat',sans-serif] font-extrabold leading-none">
-          <span className="text-[clamp(2rem,3.02vw,3.625rem)]">600</span>
-          <span className="text-[clamp(1.5rem,1.98vw,2.375rem)]">ml</span>
-        </p>
-      </div>
+      <SizeCard
+        label="Garrafa"
+        volume="600"
+        unit="ml"
+        icon={
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 3h6v3l3 5v12a2 2 0 01-2 2H10a2 2 0 01-2-2V11l3-5V3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+            <line x1="8" y1="15" x2="20" y2="15" stroke="currentColor" strokeWidth="1.5"/>
+          </svg>
+        }
+      />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import imgGarrafaPilsen901 from "figma:asset/88c9bec97d353474e5a19f715f380cdaba1
 import { Button, WhatsAppAnimIcon } from "../shared/Button";
 import { gridBase } from "../code/constants";
 import { ScrollFadeIn } from "../animations/ScrollFadeIn";
+import { ScrollParallax } from "../animations/ScrollParallax";
 
 interface ProductCardProps {
   image: string;
@@ -122,10 +123,11 @@ function PilsenProductDetail() {
     <div className={`${gridBase} relative w-full overflow-hidden min-h-[50rem] pt-[3.125rem] z-2`}>
 
       {/* Heading left */}
-
-      <ScrollFadeIn direction="up" className="col-[1_/_7] row-[1_/_-1] z-5 mt-[3rem] z-10">
-        <PilsenHeading />
-      </ScrollFadeIn>
+      <ScrollParallax speed={-5} className="col-[1_/_7] row-[1_/_-1] z-10">
+        <ScrollFadeIn direction="up" className="mt-[4rem] ">
+          <PilsenHeading />
+        </ScrollFadeIn>
+      </ScrollParallax>
 
 
       {/* Bottle center */}
@@ -138,16 +140,20 @@ function PilsenProductDetail() {
       </ScrollFadeIn>
 
       {/* Dashed pointer line */}
-      <ScrollFadeIn direction="up" delay={0.6} className="col-[7_/_span_3] row-[1_/_-1] mt-[4rem] ml-[4rem] z-0">
-        <svg width="157" height="23" viewBox="0 0 157.277 22.4682" fill="none">
-          <line stroke="#737373" strokeDasharray="2 2" x2="146.043" y1="10.734" y2="10.734" />
-          <ellipse cx="146.043" cy="11.234" fill="#FFBD24" rx="11.234" ry="11.234" />
-        </svg>
-      </ScrollFadeIn>
+      <ScrollParallax speed={-5} className="col-[7_/_span_3] row-[1_/_-1] z-0">
+        <ScrollFadeIn direction="up" delay={0.6} className="mt-[4rem] ml-[4rem]">
+          <svg width="157" height="23" viewBox="0 0 157.277 22.4682" fill="none">
+            <line stroke="#737373" strokeDasharray="2 2" x2="146.043" y1="10.734" y2="10.734" />
+            <ellipse cx="146.043" cy="11.234" fill="#FFBD24" rx="11.234" ry="11.234" />
+          </svg>
+        </ScrollFadeIn>
+      </ScrollParallax>
 
       {/* Text right */}
-      <ScrollFadeIn direction="up" delay={0.6} className="col-[9_/-1] row-[1_/_-1] mt-[4rem]">
-        <PilsenTextRight />
+      <ScrollFadeIn speed={-5} className="col-[9_/-1] row-[1_/_-1]">
+        <ScrollFadeIn direction="up" delay={0.6} className=" mt-[4rem]">
+          <PilsenTextRight />
+        </ScrollFadeIn>
       </ScrollFadeIn>
 
       <div className="w-full min-h-[19vh] absolute bottom-[-1rem] z-0 bg-[#ffbd24]"></div>

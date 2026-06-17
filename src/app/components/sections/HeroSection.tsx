@@ -10,6 +10,7 @@ import imgGarrafRedDraft from "figma:asset/garrafa_hero.png";
 import { Navbar } from "../shared/Navbar";
 import { Button, WhatsAppAnimIcon, ArrowAnimIcon } from "../shared/Button";
 import { gridBase } from "../code/constants";
+import { ScrollParallax } from "../animations/ScrollParallax";
 
 /* ─── Hero title ────────────────────────────────────────────────────────── */
 
@@ -155,44 +156,50 @@ export function HeroSection() {
       >
 
 
-        <div
-          ref={contentAnimRef}
-          className="col-[4_/_10] skew-y-[-3deg] flex flex-col gap-6 items-center z-[5] mt-[15rem]"
+        <ScrollParallax speed={-5}
+          className="col-[4_/_10] flex flex-col items-center z-[5]"
         >
-          <TitleBox />
-          <HeroButtons />
-        </div>
-
-        <div
-          ref={redBottleAnimRef}
-          className="relative left-[-70rem] top-[-7rem] z-[0]"
-        >
-          <div
-            ref={redBottleHover.ref}
-            onMouseMove={redBottleHover.onMouseMove}
-            onMouseLeave={redBottleHover.onMouseLeave}
-            style={redBottleHover.style}
-          >
-
-            <img alt="" src={imgGarrafRedDraft} className="max-w-[19rem] w-[18rem]" />
+          <div ref={contentAnimRef} className="skew-y-[-3deg] flex flex-col gap-6 justify-center items-center mt-[15rem]">
+            <TitleBox />
+            <HeroButtons />
           </div>
-        </div>
+        </ScrollParallax>
+
+        <ScrollParallax speed={-70}
+          className="relative left-[-70rem] top-[-25rem] z-[0]"
+        >
+          <div ref={redBottleAnimRef}>
+            <div
+              ref={redBottleHover.ref}
+              onMouseMove={redBottleHover.onMouseMove}
+              onMouseLeave={redBottleHover.onMouseLeave}
+              style={redBottleHover.style}
+            >
+              <img alt="" src={imgGarrafRedDraft} className="max-w-[19rem] w-[18rem]" />
+            </div>
+          </div>
+        </ScrollParallax>
       </section >
 
-      <div
-        ref={pilsenBottleAnimRef}
+      {/* Garrafa Pilsen */}
+      <ScrollParallax speed={35}
         className="absolute left-[76rem] top-[3rem] w-[42.1634rem] h-[67.1841rem] z-10"
       >
         <div
-          ref={pilsenBottleHover.ref}
-          onMouseMove={pilsenBottleHover.onMouseMove}
-          onMouseLeave={pilsenBottleHover.onMouseLeave}
-          style={pilsenBottleHover.style}
+          ref={pilsenBottleAnimRef}
           className="w-full h-full"
         >
-          <img alt="Nosso Chope Pilsen" src={imgGarrafaPilsen1} />
+          <div
+            ref={pilsenBottleHover.ref}
+            onMouseMove={pilsenBottleHover.onMouseMove}
+            onMouseLeave={pilsenBottleHover.onMouseLeave}
+            style={pilsenBottleHover.style}
+            className="w-full h-full"
+          >
+            <img alt="Nosso Chope Pilsen" src={imgGarrafaPilsen1} />
+          </div>
         </div>
-      </div>
-    </div>
+      </ScrollParallax>
+    </div >
   );
 }
