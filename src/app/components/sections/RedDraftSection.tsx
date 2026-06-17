@@ -100,12 +100,14 @@ function RedDraftBranding() {
 function RedDraftHero() {
   return (
     <div
-      className={`${gridBase} relative w-full overflow-hidden h-[61.25rem] bg-[image:var(--bg-image-desktop-lg)] bg-cover bg-center`}
-      style={{
-        '--bg-image-desktop-lg': `url(${imgRedDraft1})`,
-      } as React.CSSProperties}>
+      className={`${gridBase} relative w-full overflow-hidden h-[61.25rem]`}>
 
-      <ScrollParallax speed={5} className="col-[2_/_6] row-[1_/_-1] flex items-center">
+      <ScrollParallax speed={-10} className="absolute inset-0 z-1 w-full h-full">
+        <img src={imgRedDraft1} alt="Jovem mulher segurando uma lata de Nosso Chope RedDraft."
+          className="object-cover scale-[1.15]" />
+      </ScrollParallax>
+
+      <ScrollParallax speed={20} className="col-[2_/_6] row-[1_/_-1] flex items-center z-2">
         <RedDraftBranding />
       </ScrollParallax>
     </div>

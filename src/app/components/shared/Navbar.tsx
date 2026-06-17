@@ -11,21 +11,21 @@ function InstagramIcon() {
       <div className="absolute inset-[8.33%]">
         <div className="absolute inset-[-5%]">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16.5 16.5">
-            <path d={svgPaths.pef8c000} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+            <path d={svgPaths.pef8c000} stroke="#f9cc0a" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
           </svg>
         </div>
       </div>
       <div className="absolute inset-[33.15%_33.15%_33.51%_33.51%]">
         <div className="absolute inset-[-12.5%]">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 7.50001 7.50001">
-            <path d={svgPaths.p38977f00} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+            <path d={svgPaths.p38977f00} stroke="#f9cc0a" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
           </svg>
         </div>
       </div>
       <div className="absolute inset-[27.08%_27.04%_72.92%_72.92%]">
         <div className="absolute inset-[-0.046875rem]">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1.5075 1.5">
-            <path d="M0.75 0.75H0.7575" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+            <path d="M0.75 0.75H0.7575" stroke="#f9cc0a" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
           </svg>
         </div>
       </div>
@@ -39,7 +39,7 @@ function FacebookIcon() {
       <div className="absolute inset-[8.33%_25%_8.33%_29.17%]">
         <div className="absolute inset-[-5%_-9.09%]">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 9.75001 16.5">
-            <path d={svgPaths.p2c7fea00} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+            <path d={svgPaths.p2c7fea00} stroke="#f9cc0a" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
           </svg>
         </div>
       </div>
@@ -73,24 +73,40 @@ function NavMenu() {
   );
 }
 
+const socialBtnClass =
+  "group relative flex items-center justify-center w-[3.24rem] h-[3.24rem] rounded-full " +
+  "bg-black border-2 border-[#f9cc0a]/50 cursor-pointer select-none " +
+  "transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] " +
+  "hover:-translate-y-[0.175rem] hover:scale-110 hover:border-[#f9cc0a] " +
+  "hover:shadow-[0_0_1rem_rgba(249,204,10,0.6),0_0.3rem_0.9rem_rgba(0,0,0,0.4)] " +
+  "active:scale-95 active:translate-y-0 " +
+  "focus-visible:ring-2 focus-visible:ring-[#f9cc0a] focus-visible:ring-offset-2 focus-visible:ring-offset-black";
+
 function NavActions() {
   return (
-    <div className="flex items-center gap-4">
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center cursor-pointer">
-        <InstagramIcon />
-      </a>
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center cursor-pointer">
-        <FacebookIcon />
-      </a>
-      <Link
-        to="/contato"
-        className="inline-flex items-center justify-center bg-[#f9cc0a] text-[#1a0e04] font-['Inter',sans-serif] font-bold text-[0.75rem] tracking-[0.0225rem] uppercase px-[1.125rem] rounded-[0.25rem] cursor-pointer select-none
-          transition-all duration-200 hover:-translate-y-[0.125rem] hover:brightness-[1.06] hover:shadow-[0_0.375rem_1.125rem_rgba(249,204,10,0.5)]
-          active:translate-y-[0.0625rem] active:brightness-[0.96]
-          focus-visible:ring-2 focus-visible:ring-[#f9cc0a] focus-visible:ring-offset-1 h-[2.125rem] min-w-[6.875rem] ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+    <div className="flex items-center gap-3">
+      <a
+        href="https://instagram.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={socialBtnClass}
+        aria-label="Instagram"
       >
-        SAIBA MAIS
-      </Link>
+        <span className="transition-all duration-300 group-hover:drop-shadow-[0_0_6px_rgba(249,204,10,1)]">
+          <InstagramIcon />
+        </span>
+      </a>
+      <a
+        href="https://facebook.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={socialBtnClass}
+        aria-label="Facebook"
+      >
+        <span className="transition-all duration-300 group-hover:brightness-[2] group-hover:drop-shadow-[0_0_4px_rgba(249,204,10,0.8)]">
+          <FacebookIcon />
+        </span>
+      </a>
     </div>
   );
 }
@@ -104,8 +120,8 @@ interface NavbarProps {
 
 export function Navbar({ variant = "overlay" }: NavbarProps) {
   const posClass = variant === "overlay"
-    ? "absolute left-0 top-[0.125rem] w-full z-20"
-    : "relative w-full z-20";
+    ? "absolute left-0 top-[0.125rem] w-full z-[99]"
+    : "relative w-full z-[99]";
 
   return (
     <nav className={`${posClass} h-[7.5rem]`}>
