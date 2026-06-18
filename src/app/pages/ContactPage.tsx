@@ -50,7 +50,7 @@ function ContactHeader() {
     >
       <Navbar variant="page" />
 
-      <div className="px-[15.625rem] pt-[3.75rem] pb-[5rem]">
+      <div className="px-[15.625rem] max-2xl:px-[5rem] pt-[3.75rem] pb-[5rem]">
         {/* Breadcrumb */}
         <nav aria-label="breadcrumb" className="mb-[2rem]">
           <ol className="flex items-center gap-2 font-['Montserrat',sans-serif] text-[0.875rem] text-[#1a0e04]">
@@ -397,8 +397,8 @@ export function ContactPage() {
       <ContactHeader />
 
       {/* Main content */}
-      <main className="flex-1 bg-white px-[15.625rem] py-[5rem]">
-        <div className="flex gap-[5rem] items-start">
+      <main className="flex-1 bg-white px-[15.625rem] max-2xl:px-[5rem] py-[5rem]">
+        <div className="flex gap-[5rem] max-2xl:gap-[3rem] items-start">
           {/* Form — 7 cols equivalent */}
           <div className="flex-1 min-w-0">
             <div className="mb-[2rem]">
@@ -415,7 +415,7 @@ export function ContactPage() {
           </div>
 
           {/* Sidebar — contact info */}
-          <div className="flex-shrink-0 w-[23.75rem]">
+          <div className="flex-shrink-0 w-[23.75rem] max-2xl:w-[20rem]">
             <ContactInfo />
           </div>
         </div>

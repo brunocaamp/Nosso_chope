@@ -3,8 +3,9 @@ import imgImagem from "figma:asset/a9681d8b276a141e525ef952d6015a2c672b4e07.png"
 import imgImage5 from "figma:asset/b3200e5bdec36f9c3876a5facc8a13c6cbf8df27.png";
 import imgAssaiLogo from "figma:asset/0dc0127cfe32b13e632cd33260374726629b23d8.png";
 import { LocationIcon, ArrowRightIcon } from "../shared/icons";
-import { Button, ArrowAnimIcon, SmallButton } from "../shared/Button";
+import { Button, ButtonLink, ArrowAnimIcon, SmallButton } from "../shared/Button";
 import { ScrollFadeIn } from "../animations/ScrollFadeIn";
+import { Link } from "react-router";
 
 /* ═══════════════════════════════════════════════════════════════════════════
    Types
@@ -42,6 +43,7 @@ function PartnerCard({
       className="
         group relative flex-shrink-0 rounded-[1.25rem] overflow-hidden
         w-[22.5625rem] h-[27rem] cursor-pointer
+        max-2xl:w-[18rem] max-2xl:h-[22rem]
         border border-white/10
         shadow-[0_0.25rem_1.5rem_0_rgba(26,14,4,0.08)]
         transition-all duration-[400ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]
@@ -147,9 +149,10 @@ const SOURCE_PARTNERS: PartnerCardProps[] = [
    ═══════════════════════════════════════════════════════════════════════════ */
 
 const VISIBLE = 3;           // cards shown at once
-const CARD_W = 22.5625;      // rem — card width
-const GAP    = 1.5;          // rem — gap between cards
-const STEP   = CARD_W + GAP; // rem — distance to scroll per slide
+const CARD_W_FULL = 22.5625; // rem — card width at 1920+
+const CARD_W_SM   = 18;      // rem — card width at <1536
+const GAP_FULL    = 1.5;     // rem — gap at 1920+
+const GAP_SM      = 1.25;    // rem — gap at <1536
 
 // Number of clone items prepended/appended for the infinite loop
 const CLONE_COUNT = VISIBLE;
@@ -187,6 +190,20 @@ const REM_PX   = 16;   // px per rem (assumed)
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export function PartnersSection() {
+  // Responsive carousel dimensions
+  const [isSmall, setIsSmall] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1536);
+  React.useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1535px)');
+    const handler = (e: MediaQueryListEvent) => setIsSmall(e.matches);
+    setIsSmall(mq.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  const CARD_W = isSmall ? CARD_W_SM : CARD_W_FULL;
+  const GAP    = isSmall ? GAP_SM : GAP_FULL;
+  const STEP   = CARD_W + GAP;
+
   // realIndex: which real item (0…total-1) is first in the viewport
   const [realIndex, setRealIndex] = useState(0);
   // extIndex: actual track position (includes clone offset)
@@ -306,6 +323,7 @@ export function PartnersSection() {
       className="
         w-full bg-white flex flex-col items-center gap-[3.75rem]
         pt-[9.375rem] pb-[6.375rem]
+        max-2xl:pt-[6rem] max-2xl:pb-[4rem]
         [overflow-x:hidden] [overflow-y:visible]
       "
     >
@@ -466,14 +484,21 @@ export function PartnersSection() {
           </p>
         </div>
         <div className="flex items-center gap-[0.875rem]">
-          <Button variant="arrow-yellow">
+          <ButtonLink
+            variant="arrow-yellow"
+            href="https://api.whatsapp.com/send?phone=+5521996533939&text=Quero+ser+parceiro+Nosso+Chope!"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <ArrowAnimIcon stroke="#171717" />
             Seja um parceiro
-          </Button>
-          <Button variant="arrow-dark">
-            <ArrowAnimIcon stroke="#FAFAFA" />
-            Saiba Mais
-          </Button>
+          </ButtonLink>
+          <Link to="/parceiros">
+            <Button variant="arrow-dark">
+              <ArrowAnimIcon stroke="#FAFAFA" />
+              Saiba Mais
+            </Button>
+          </Link>
         </div>
       </ScrollFadeIn>
 

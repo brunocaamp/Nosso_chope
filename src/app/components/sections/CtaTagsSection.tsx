@@ -67,7 +67,7 @@ export function CtaTagsSection() {
   }, []);
 
   return (
-    <section className={`${gridBase} w-full py-[3.125rem] pb-[5rem] overflow-hidden`}>
+    <section className={`${gridBase} w-full py-[3.125rem] pb-[5rem] max-2xl:pb-[3rem] overflow-hidden`}>
       <div ref={containerRef} className="col-[1_/_-1] flex flex-col items-center space-y-[-1.0625rem] origin-center">
 
         <ScrollFadeIn direction="left">

@@ -1,1 +1,1 @@
-export const gridBase = "grid grid-cols-12 grid-rows-[auto] gap-x-[1.2rem] pr-[15rem] pl-[15rem]";
+export const gridBase = "grid grid-cols-12 grid-rows-[auto] gap-x-[1.2rem] pr-[15rem] pl-[15rem] max-2xl:pr-[5rem] max-2xl:pl-[5rem]";

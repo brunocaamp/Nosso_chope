@@ -15,7 +15,7 @@ import imgPilsen from "figma:asset/6f63adec7cfe453cd371819abd4baadd4162da7a.png"
 
 import { Link } from "react-router";
 import { Navbar } from "../components/shared/Navbar";
-import { Button, ArrowAnimIcon, WhatsAppAnimIcon } from "../components/shared/Button";
+import { Button, ButtonLink, ArrowAnimIcon, WhatsAppAnimIcon } from "../components/shared/Button";
 import { gridBase } from "../components/code/constants";
 import { ScrollFadeIn } from "../components/animations/ScrollFadeIn";
 import { FooterSection } from "../components/sections/FooterSection";
@@ -187,6 +187,7 @@ function SpecsCard({ specs, isDark }: { specs: SpecRow[]; isDark?: boolean }) {
 interface ImageSlot {
   imgIndex: number;
   height: string;
+  heightSm?: string;
   zIndex: number;
   marginLeft?: string;
   translateY?: string;
@@ -194,18 +195,18 @@ interface ImageSlot {
 
 const IMAGE_LAYOUTS: Record<ImgLayout, ImageSlot[]> = {
   "triple-stagger": [
-    { imgIndex: 1, height: "47rem", zIndex: 0, translateY: "0.4475rem" },
-    { imgIndex: 0, height: "48.875rem", zIndex: 1, marginLeft: "-11.0625rem" },
-    { imgIndex: 2, height: "47.8125rem", zIndex: 0, marginLeft: "-13.75rem", translateY: "0.4475rem" },
+    { imgIndex: 1, height: "47rem", heightSm: "35rem", zIndex: 0, translateY: "0.4475rem" },
+    { imgIndex: 0, height: "48.875rem", heightSm: "36.5rem", zIndex: 1, marginLeft: "-11.0625rem" },
+    { imgIndex: 2, height: "47.8125rem", heightSm: "35.5rem", zIndex: 0, marginLeft: "-13.75rem", translateY: "0.4475rem" },
   ],
   "triple-side": [
-    { imgIndex: 0, height: "52.3125rem", zIndex: 0 },
-    { imgIndex: 1, height: "52.3125rem", zIndex: 1, marginLeft: "-11.0625rem", translateY: "0.8125rem" },
-    { imgIndex: 2, height: "52.3125rem", zIndex: 0, marginLeft: "-11.6875rem" },
+    { imgIndex: 0, height: "52.3125rem", heightSm: "39rem", zIndex: 0 },
+    { imgIndex: 1, height: "52.3125rem", heightSm: "39rem", zIndex: 1, marginLeft: "-11.0625rem", translateY: "0.8125rem" },
+    { imgIndex: 2, height: "52.3125rem", heightSm: "39rem", zIndex: 0, marginLeft: "-11.6875rem" },
   ],
   "two-bottle": [
-    { imgIndex: 0, height: "40.375rem", zIndex: 1 },
-    { imgIndex: 1, height: "59.5rem", zIndex: 0, marginLeft: "-4.2778rem" },
+    { imgIndex: 0, height: "40.375rem", heightSm: "30rem", zIndex: 1 },
+    { imgIndex: 1, height: "59.5rem", heightSm: "44rem", zIndex: 0, marginLeft: "-4.2778rem" },
   ],
 };
 
@@ -228,7 +229,9 @@ function ProductImages({ images, layout }: { images: string[]; layout: ImgLayout
             alt=""
             className="w-auto object-contain pointer-events-none"
             style={{
-              height: slot.height,
+              height: slot.heightSm
+                ? `clamp(${slot.heightSm}, ${parseFloat(slot.height) * 3.33}vw, ${slot.height})`
+                : slot.height,
               transform: slot.translateY ? `translateY(${slot.translateY})` : undefined,
             }}
           />
@@ -293,10 +296,15 @@ function ProductTextBlock({ product, withPadding }: { product: ProductConfig; wi
 
       {/* CTA */}
       <ScrollFadeIn direction="up" delay={0.55} distance={30} duration={0.7}>
-        <Button variant={variant}>
+        <ButtonLink
+          variant={variant}
+          href="https://api.whatsapp.com/send?phone=+5521996533939&text=Quero+ser+parceiro+Nosso+Chope!"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <ArrowAnimIcon stroke={stroke} />
           Seja um parceiro
-        </Button>
+        </ButtonLink>
       </ScrollFadeIn>
     </div>
   );
@@ -311,8 +319,8 @@ function ProductSection({ product }: { product: ProductConfig }) {
 
   // White sections: pt-9.375rem pb-6.25rem | Gradient sections: py-9.375rem
   const py = sectionBg === "bg-white"
-    ? "pt-[9.375rem] pb-[6.25rem]"
-    : "py-[9.375rem]";
+    ? "pt-[9.375rem] pb-[6.25rem] max-2xl:pt-[6rem] max-2xl:pb-[4rem]"
+    : "py-[9.375rem] max-2xl:py-[6rem]";
 
   const imagesBlock = (
     <ScrollFadeIn direction="up" distance={80} duration={1} className="col-span-7 flex items-end">
@@ -370,10 +378,15 @@ function HeroTitleBlock() {
 function HeroButtons() {
   return (
     <div className="flex items-center gap-[1.25rem]">
-      <Button variant="whatsapp-dark">
+      <ButtonLink
+        variant="whatsapp-dark"
+        href="https://api.whatsapp.com/send?phone=+5521996533939&text=Gostaria+de+saber+mais+informa%C3%A7%C3%B5es!"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <WhatsAppAnimIcon fill="#FFBD24" />
         Peça Agora!
-      </Button>
+      </ButtonLink>
 
       <Button variant="arrow-white">
         <ArrowAnimIcon stroke="#171717" />
@@ -387,7 +400,7 @@ function HeroSection() {
   return (
     <section
       className="relative w-full flex flex-col overflow-hidden"
-      style={{ minHeight: "55rem", isolation: "isolate" }}
+      style={{ minHeight: "clamp(42rem, 55vw, 55rem)", isolation: "isolate" }}
     >
       {/* Background image — decorative, behind all content */}
       <img
@@ -529,7 +542,7 @@ const ADVANTAGES = [
 
 function AdvantagesSection() {
   return (
-    <section className="w-full overflow-hidden bg-gradient-to-b from-[#ffbd24] to-[#f5a623] py-[6.25rem]">
+    <section className="w-full overflow-hidden bg-gradient-to-b from-[#ffbd24] to-[#f5a623] py-[6.25rem] max-2xl:py-[4rem]">
       <div className={`${gridBase} items-center`}>
         {/* Centered heading — pattern from SocialProofSection */}
         <div className="col-span-12 flex flex-col items-center text-center mb-[3.75rem]">

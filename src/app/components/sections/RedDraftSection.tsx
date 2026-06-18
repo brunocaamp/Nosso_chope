@@ -21,7 +21,7 @@ function TagBox({ text, bg, textColor, fontSize, fontWeight, rotation }: {
       style={{ transform: `rotate(${rotation}deg)` }}
     >
       <div
-        className="flex items-center justify-center px-[1.6rem] py-[1.6rem] rounded-[0.625rem]"
+        className="flex items-center justify-center px-[1.6rem] py-[1.6rem] max-2xl:px-[1rem] max-2xl:py-[1rem] rounded-[0.625rem] max-2xl:rounded-[0.4rem]"
         style={{ backgroundColor: bg }}
       >
         <p
@@ -46,7 +46,9 @@ function RedDraftBranding() {
     >
       {/* Logo */}
       <ScrollFadeIn direction="left" className="flex flex-col items-center gap-[0.125rem]">
-        <LogoLightSvg width={300} height={206} />
+        <div className="w-[18.75rem] h-[12.875rem] max-2xl:w-[15rem] max-2xl:h-[10.3rem] [&>svg]:w-full [&>svg]:h-full flex items-center justify-center">
+          <LogoLightSvg width={300} height={206} />
+        </div>
 
 
         <p
@@ -100,9 +102,9 @@ function RedDraftBranding() {
 function RedDraftHero() {
   return (
     <div
-      className={`${gridBase} relative w-full overflow-hidden h-[61.25rem]`}>
+      className={`${gridBase} relative w-full overflow-hidden h-[61.25rem] max-2xl:h-[46rem]`}>
 
-      <ScrollParallax speed={-50} className="absolute inset-0 z-1 w-full h-full">
+      <ScrollParallax speed={-25} className="absolute inset-0 z-1 w-full h-full">
         <img src={imgRedDraft1} alt="Jovem mulher segurando uma lata de Nosso Chope RedDraft."
           className="object-cover scale-[1.15]" />
       </ScrollParallax>
@@ -143,9 +145,9 @@ function SizesBox() {
         unit="ml"
         icon={
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="4" width="12" height="20" rx="3" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-            <rect x="10" y="2" width="8" height="3" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
-            <line x1="8" y1="10" x2="20" y2="10" stroke="currentColor" strokeWidth="1.5"/>
+            <rect x="8" y="4" width="12" height="20" rx="3" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            <rect x="10" y="2" width="8" height="3" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="8" y1="10" x2="20" y2="10" stroke="currentColor" strokeWidth="1.5" />
           </svg>
         }
       />
@@ -159,8 +161,8 @@ function SizesBox() {
         unit="ml"
         icon={
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11 3h6v3l3 5v12a2 2 0 01-2 2H10a2 2 0 01-2-2V11l3-5V3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-            <line x1="8" y1="15" x2="20" y2="15" stroke="currentColor" strokeWidth="1.5"/>
+            <path d="M11 3h6v3l3 5v12a2 2 0 01-2 2H10a2 2 0 01-2-2V11l3-5V3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            <line x1="8" y1="15" x2="20" y2="15" stroke="currentColor" strokeWidth="1.5" />
           </svg>
         }
       />
@@ -171,7 +173,7 @@ function SizesBox() {
 function RedDraftDetail() {
   return (
     <div
-      className={`${gridBase} py-[8rem] items-center  justify-center w-full overflow-hidden relative bg-gradient-to-b from-[#822d81] to-[#471046] h-[76.9375rem]`}
+      className={`${gridBase} py-[8rem] max-2xl:py-[5rem] items-center  justify-center w-full overflow-hidden relative bg-gradient-to-b from-[#822d81] to-[#471046] h-[76.9375rem] max-2xl:h-[60rem]`}
     >
       <div className="col-[1_/_8] row-[1_/_-1] relative grid grid-cols-12">
         {/* Decorative icons */}
@@ -189,7 +191,7 @@ function RedDraftDetail() {
         {/* Main Red Draft bottle */}
         <ScrollParallax speed={10} className="col-[5_/_-1] row-[1_/_-1] ml-[2rem] mt-[-4rem]">
           <ScrollFadeIn direction="left">
-            <img src={imgReddraft600Ml1} alt="Red Draft 600ml" className=" rotate-[12deg] max-h-[51rem] [filter:drop-shadow(0.25rem_0.25rem_1.5rem_rgba(0,0,0,0.35))_drop-shadow(1.25rem_1.5rem_2.75rem_rgba(0,0,0,0.25))]" />
+            <img src={imgReddraft600Ml1} alt="Red Draft 600ml" className=" rotate-[12deg] max-h-[51rem] max-2xl:max-h-[38rem] [filter:drop-shadow(0.25rem_0.25rem_1.5rem_rgba(0,0,0,0.35))_drop-shadow(1.25rem_1.5rem_2.75rem_rgba(0,0,0,0.25))]" />
           </ScrollFadeIn>
         </ScrollParallax>
 
@@ -197,7 +199,7 @@ function RedDraftDetail() {
         {/* Pilsen bottle behind */}
         <ScrollParallax speed={-5} className="col-[2_/_7] row-[1_/_-1] ml-[1rem] mt-[21rem]">
           <ScrollFadeIn direction="right">
-            <img src={imgPrancheta32} alt="" className=" rotate-[-16.8deg] max-h-[33rem] [filter:drop-shadow(0.25rem_0.25rem_1.5rem_rgba(0,0,0,0.35))_drop-shadow(1.25rem_1.5rem_2.75rem_rgba(0,0,0,0.25))]" />
+            <img src={imgPrancheta32} alt="" className=" rotate-[-16.8deg] max-h-[33rem] max-2xl:max-h-[25rem] [filter:drop-shadow(0.25rem_0.25rem_1.5rem_rgba(0,0,0,0.35))_drop-shadow(1.25rem_1.5rem_2.75rem_rgba(0,0,0,0.25))]" />
           </ScrollFadeIn>
         </ScrollParallax>
       </div>
@@ -236,7 +238,7 @@ function RedDraftDetail() {
             <strong className="font-bold">O Red Draft é Ready to Drink</strong>, fresco, descolado e sempre no momento certo!
           </p>
           <p
-            className="font-['Montserrat',sans-serif] font-bold leading-[1.33] text-[1.125rem] w-[31rem]"
+            className="font-['Montserrat',sans-serif] font-bold leading-[1.33] text-[1.125rem] w-[31rem] max-2xl:w-full"
           >
             Cada copo é uma experiência única de sabor e alegria, com início suave e espuma cremosa.
           </p>
@@ -246,7 +248,7 @@ function RedDraftDetail() {
         <ScrollFadeIn direction="up" className="backdrop-blur-[0.25rem] rounded-[0.9375rem] overflow-hidden bg-[rgba(130,45,129,0.7)] border border-[#c4217e] shadow-[0.375rem_0.375rem_1.5rem_0_rgba(0,0,0,0.1)]">
           <div className="flex flex-col gap-[1.4375rem] items-start justify-center px-[1.75rem] py-[1.875rem]">
             <p
-              className="font-['Montserrat',sans-serif] font-extrabold text-white uppercase tracking-[0.075rem] text-[1.5rem] leading-none w-[26.6875rem]"
+              className="font-['Montserrat',sans-serif] font-extrabold text-white uppercase tracking-[0.075rem] text-[1.5rem] leading-none w-[26.6875rem] max-2xl:w-full max-2xl:text-[1.25rem]"
             >
               Disponível nos tamanhos:
             </p>

@@ -47,7 +47,7 @@ export function SocialCardsReveal({ cards, className = "" }: SocialCardsRevealPr
     const els = cardRefsArray.current.filter(Boolean);
     if (!wrapper || els.length === 0) return;
 
-    const SPREAD_PX = 220;
+    const SPREAD_PX = Math.min(220, window.innerWidth * 0.115);
     const finalPositions = calcFinalPositions(els.length, SPREAD_PX);
 
     const ctx = gsap.context(() => {
@@ -86,7 +86,7 @@ export function SocialCardsReveal({ cards, className = "" }: SocialCardsRevealPr
     <div
       ref={wrapperRef}
       className={`col-[1_/_-1] row-span-1 relative flex items-center justify-center
-        overflow-visible h-[38.5rem] ${className}`}
+        overflow-visible h-[38.5rem] max-2xl:h-[28rem] ${className}`}
     >
       {cards.map((card, i) => (
         <div

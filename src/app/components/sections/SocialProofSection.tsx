@@ -27,7 +27,7 @@ function SocialTitle() {
     <div className="col-[1_/_-1] row-span-1 relative w-full flex flex-col items-center pt-[1.6875rem]">
       <ScrollFadeIn direction="left">
         <p
-          className="font-['Montserrat',sans-serif] font-black text-[#171717] uppercase tracking-[0.075rem] text-center text-[clamp(2rem,2.5vw,3rem)] leading-[1.33] w-[49.6875rem]"
+          className="font-['Montserrat',sans-serif] font-black text-[#171717] uppercase tracking-[0.075rem] text-center text-[clamp(2rem,2.5vw,3rem)] leading-[1.33] w-[49.6875rem] max-2xl:w-auto"
         >
           é beber uma vez pra
         </p>
@@ -46,7 +46,7 @@ function SocialTitle() {
           aria-hidden
         />
       </ScrollFadeIn>
-      <ScrollFadeIn direction="up" className="flex flex-col items-center mt-4 text-center w-[49.6875rem]">
+      <ScrollFadeIn direction="up" className="flex flex-col items-center mt-4 text-center w-[49.6875rem] max-2xl:w-auto">
         <p className="font-['Montserrat',sans-serif] font-normal text-[#171717] text-[1.125rem] leading-[1.56]">
           Quem prova uma vez nunca mais larga,{" "}
         </p>
@@ -62,7 +62,7 @@ function SocialTitle() {
 function TrajectoryBox() {
   return (
     <ScrollFadeIn direction="up"
-      className="backdrop-blur-[0.375rem] flex gap-[2.125rem] items-start px-[1.25rem] py-[2.5rem] rounded-[1.25rem] bg-white/60 mt-[5rem] border border-[#f2f2f2]"
+      className="backdrop-blur-[0.375rem] flex gap-[2.125rem] items-start px-[1.25rem] py-[2.5rem] rounded-[1.25rem] bg-white/60 mt-[5rem] border border-[#f2f2f2] max-2xl:mt-[2rem]"
     >
       {/* Icon */}
       <div className="flex-shrink-0 flex items-center justify-center bg-[#ffbd24] rounded-[3.75rem] w-[4.875rem] h-[4.875rem]">
@@ -87,7 +87,7 @@ function TrajectoryBox() {
 function CansBanner() {
   return (
     <ScrollFadeIn direction="left" className="col-[1_/_span_9] row-[1_/_-1]" >
-      <img src={imgLatas11} alt="Latas Nosso Chope" />
+      <img src={imgLatas11} alt="Latas Nosso Chope" className="max-2xl:max-w-[88%]" />
     </ScrollFadeIn>
   );
 }
@@ -130,13 +130,13 @@ function InstagramButton() {
 export function SocialProofSection() {
   return (
     <section
-      className={`${gridBase} relative w-full overflow-hidden bg-gradient-to-b from-white to-[#f2f2f2] py-[11.25rem] `}
+      className={`${gridBase} relative w-full overflow-hidden bg-gradient-to-b from-white to-[#f2f2f2] py-[11.25rem] max-2xl:py-[7rem] max-2xl:gap-[3rem]`}
     >
 
       <SocialTitle />
       <SocialCardsReveal cards={SOCIAL_CARDS} />
       <InstagramButton />
-      <div className={`grid-cols-12 grid col-[1_/_-1] row-span-1 pt-[14rem]`}>
+      <div className={`grid-cols-12 grid col-[1_/_-1] row-span-1 pt-[14rem] max-2xl:pt-[8rem]`}>
         <CansBanner />
         <div className="col-[8_/_12] flex flex-col gap-4 items-start row-[1_/_-1] mt-[4rem]">
           <FloatingLabels />

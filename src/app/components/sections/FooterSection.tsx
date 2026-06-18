@@ -1,4 +1,5 @@
 import img473Ml02Movimento11 from "figma:asset/09b7aacbe50bbe99751d69ced8f21b700e53cfd9.png";
+import { Link } from "react-router";
 import {
   FooterInstagramIcon,
   FooterFacebookIcon,
@@ -7,7 +8,7 @@ import {
   EmailIcon,
   PhoneFooterIcon,
 } from "../shared/icons";
-import { Button, WhatsAppAnimIcon, IconButton } from "../shared/Button";
+import { Button, ButtonLink, WhatsAppAnimIcon, IconButton } from "../shared/Button";
 import { gridBase } from "../code/constants";
 
 function SocialHashtag() {
@@ -23,17 +24,23 @@ function SocialHashtag() {
 }
 
 function Navigation() {
-  const links = ["Início", "Produtos", "Nosso Jeito", "Red Draft", "Parceiros"];
+  const NAV_LINKS = [
+    { label: "Início", href: "/" },
+    { label: "Produtos", href: "/#pilsen" },
+    { label: "Seja um Parceiro", href: "/parceiros" },
+    { label: "Delivery", href: "/#delivery" },
+    { label: "Contato", href: "/contato" },
+  ];
   return (
     <div className="flex flex-col gap-4 text-[#171717] w-[15.75rem]">
       <p className="font-['Montserrat',sans-serif] font-bold text-[1rem] tracking-[1.54px] uppercase leading-[1]">
         NAVEGAÇÃO
       </p>
       <div className="flex flex-col gap-2">
-        {links.map((link) => (
-          <p key={link} className="font-['Montserrat',sans-serif] font-normal text-[1rem] leading-[1.22] cursor-pointer hover:text-[#1a0e04] transition-colors">
-            {link}
-          </p>
+        {NAV_LINKS.map(({ label, href }) => (
+          <Link key={label} to={href} className="font-['Montserrat',sans-serif] font-normal text-[1rem] leading-[1.22] cursor-pointer hover:text-[#1a0e04] transition-colors block">
+            {label}
+          </Link>
         ))}
       </div>
     </div>
@@ -43,7 +50,9 @@ function Navigation() {
 function LogoBlock() {
   return (
     <div className="flex flex-col gap-4 items-start">
-      <LogoDarkSvg width={178} height={100} />
+      <Link to="/" className="inline-block transition-transform duration-300 hover:scale-105">
+        <LogoDarkSvg width={178} height={100} />
+      </Link>
       <p className="font-['Montserrat',sans-serif] font-normal text-[#171717] text-[1rem] leading-[1.46] w-[11.9375rem]">
         O puro malte que está conquistando o Brasil.
       </p>
@@ -75,27 +84,33 @@ function ContactInfo() {
           </p>
         </div>
         <div className="flex items-center gap-3 mt-2">
-          <IconButton
-            size={54}
-            bg="rgba(255,255,255,0.15)"
-            shadow="hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
-          >
-            <FooterInstagramIcon stroke="#624E00" size={26} />
-          </IconButton>
-          <IconButton
-            size={54}
-            bg="rgba(255,255,255,0.15)"
-            shadow="hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
-          >
-            <FooterFacebookIcon stroke="#624E00" size={26} />
-          </IconButton>
-          <IconButton
-            size={54}
-            bg="rgba(255,255,255,0.15)"
-            shadow="hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
-          >
-            <FooterTwitterIcon stroke="#624E00" size={26} />
-          </IconButton>
+          <a href="https://www.instagram.com/nossochope/" target="_blank" rel="noopener noreferrer">
+            <IconButton
+              size={54}
+              bg="rgba(255,255,255,0.15)"
+              shadow="hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
+            >
+              <FooterInstagramIcon stroke="#624E00" size={26} />
+            </IconButton>
+          </a>
+          <a href="https://www.instagram.com/nossochope/" target="_blank" rel="noopener noreferrer">
+            <IconButton
+              size={54}
+              bg="rgba(255,255,255,0.15)"
+              shadow="hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
+            >
+              <FooterFacebookIcon stroke="#624E00" size={26} />
+            </IconButton>
+          </a>
+          <a href="https://www.instagram.com/nossochope/" target="_blank" rel="noopener noreferrer">
+            <IconButton
+              size={54}
+              bg="rgba(255,255,255,0.15)"
+              shadow="hover:shadow-[0_6px_20px_rgba(0,0,0,0.3)]"
+            >
+              <FooterTwitterIcon stroke="#624E00" size={26} />
+            </IconButton>
+          </a>
         </div>
       </div>
     </div>
@@ -111,24 +126,29 @@ function ReserveBlock() {
       <p className="font-['Montserrat',sans-serif] font-normal text-[#171717] text-[1rem] leading-[1.46] w-[12.1875rem]">
         Faça sua pré-reserva
       </p>
-      <Button variant="reserve-dark">
+      <ButtonLink
+        variant="reserve-dark"
+        href="https://api.whatsapp.com/send?phone=+5521996533939&text=Gostaria+de+saber+mais+informa%C3%A7%C3%B5es!"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <WhatsAppAnimIcon fill="white" />
         Reserve já
-      </Button>
+      </ButtonLink>
     </div>
   );
 }
 
 function FooterContent() {
   return (
-    <div className="relative flex flex-col gap-[5rem] items-center w-full px-[1.5rem] pt-[8.125rem]">
+    <div className="relative flex flex-col gap-[5rem] max-2xl:gap-[3rem] items-center w-full px-[1.5rem] pt-[8.125rem] max-2xl:pt-[5rem]">
       {/* Social hashtag */}
       <SocialHashtag />
 
       {/* Main footer info */}
       <div className="flex items-start justify-between w-full max-w-[96.25rem]">
         {/* Left: logo + nav */}
-        <div className="flex items-start gap-[6.25rem]">
+        <div className="flex items-start gap-[6.25rem] max-2xl:gap-[3rem]">
           <LogoBlock />
           <Navigation />
         </div>
@@ -154,7 +174,7 @@ function FooterContent() {
 
       {/* Decorative bottle in motion */}
       <div
-        className="absolute pointer-events-none left-[13.75rem] top-[4.3125rem] w-[69.1875rem] h-[85rem] rotate-[-9.38deg] opacity-85 z-60"
+        className="absolute pointer-events-none left-[13.75rem] max-2xl:left-[5rem] top-[4.3125rem] w-[69.1875rem] max-2xl:w-[52rem] h-[85rem] max-2xl:h-[65rem] rotate-[-9.38deg] opacity-85 z-60"
       >
         <img
           src={img473Ml02Movimento11}
@@ -169,7 +189,7 @@ function FooterContent() {
 export function FooterSection() {
   return (
     <footer
-      className="relative w-full overflow-hidden bg-gradient-to-b from-[#ffd324] to-[#e9a402] min-h-[54.6875rem] z-50"
+      className="relative w-full overflow-hidden bg-gradient-to-b from-[#ffd324] to-[#e9a402] min-h-[54.6875rem] max-2xl:min-h-[42rem] z-50"
     >
       <FooterContent />
     </footer>

@@ -59,7 +59,7 @@ const NAV_LINKS = [
 
 function NavMenu() {
   return (
-    <div className="bg-[#f2f2f2] shadow-[0_0.75rem_0.5rem_rgba(0,0,0,0.08),0_0.25rem_0.1875rem_rgba(0,0,0,0.03)] flex items-center gap-[2rem] px-[2.5rem] py-[1.25rem] rounded-[2.5rem] font-['Inter',sans-serif] font-medium text-[#262626] text-[1rem] whitespace-nowrap">
+    <div className="bg-[#f2f2f2] shadow-[0_0.75rem_0.5rem_rgba(0,0,0,0.08),0_0.25rem_0.1875rem_rgba(0,0,0,0.03)] flex items-center gap-[2rem] px-[2.5rem] py-[1.25rem] rounded-[2.5rem] font-['Inter',sans-serif] font-medium text-[#262626] text-[1rem] whitespace-nowrap max-2xl:gap-[1.25rem] max-2xl:px-[1.5rem] max-2xl:py-[1rem] max-2xl:text-[0.875rem]">
       {NAV_LINKS.map(({ label, href }) => (
         <Link
           key={label}
@@ -87,7 +87,7 @@ function NavActions() {
   return (
     <div className="flex items-center gap-3">
       <a
-        href="https://instagram.com"
+        href="https://www.instagram.com/nossochope/"
         target="_blank"
         rel="noopener noreferrer"
         className={socialBtnClass}
@@ -98,7 +98,7 @@ function NavActions() {
         </span>
       </a>
       <a
-        href="https://facebook.com"
+        href="https://www.instagram.com/nossochope/"
         target="_blank"
         rel="noopener noreferrer"
         className={socialBtnClass}
@@ -126,8 +126,8 @@ export function Navbar({ variant = "overlay" }: NavbarProps) {
 
   return (
     <nav className={`${posClass} h-[7.5rem]`}>
-      <div className="flex items-center justify-between h-full px-[3.75rem]">
-        <Link to="/" className="relative flex-shrink-0 w-[6.25rem] h-[3.5625rem]">
+      <div className="flex items-center justify-between h-full px-[3.75rem] max-2xl:px-[2rem]">
+        <Link to="/" className="relative flex-shrink-0 w-[6.25rem] h-[3.5625rem] max-2xl:w-[5rem] max-2xl:h-[2.85rem]">
           <img
             src={imgLogoBlack1}
             alt="Nosso Chope"

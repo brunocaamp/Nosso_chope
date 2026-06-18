@@ -1,6 +1,6 @@
 import imgSectionDelivery from "figma:asset/0cc732f52dd74a50b412d44de7015893678ade2e.png";
 import imgChopeiraNossochope1 from "figma:asset/5eec9c6fb1145ae27471863a01cc006899493f97.png";
-import { Button, WhatsAppAnimIcon, PlayButton } from "../shared/Button";
+import { Button, ButtonLink, WhatsAppAnimIcon, PlayButton } from "../shared/Button";
 import { gridBase } from "../code/constants";
 import { ScrollFadeIn } from "../animations/ScrollFadeIn";
 import { ScrollParallax } from "../animations/ScrollParallax";
@@ -9,7 +9,7 @@ function EventTitle() {
   return (
     <div className="relative inline-grid place-items-start flex-shrink-0 grid-cols-[max-content] grid-rows-[max-content]">
       <ScrollFadeIn direction="left"
-        className="font-['Montserrat',sans-serif] font-black text-[#171717] uppercase tracking-[0.075rem] col-start-1 row-start-1 text-[clamp(2.5rem,3.75vw,4.5rem)] leading-[1.08] w-[44.375rem]"
+        className="font-['Montserrat',sans-serif] font-black text-[#171717] uppercase tracking-[0.075rem] col-start-1 row-start-1 text-[clamp(2.5rem,3.75vw,4.5rem)] leading-[1.08] w-[44.375rem] max-2xl:w-auto"
       >
         <p className="mb-[0.25rem]">Tenha o</p>
         <p>nosso chope</p>
@@ -35,7 +35,7 @@ export function DeliverySection() {
 
       {/* Chopeira image — right side */}
       <ScrollFadeIn direction="up"
-        className="col-[8_/_13] row-[1_/_-1] pointer-events-none z-10 self-end relative bottom-[-1rem] right-[-6rem]"
+        className="col-[8_/_13] row-[1_/_-1] pointer-events-none z-10 self-end relative bottom-[-1rem] right-[-6rem] max-2xl:right-[-2rem]"
       >
         <ScrollParallax speed={-5}>
           <img
@@ -46,7 +46,7 @@ export function DeliverySection() {
         </ScrollParallax>
       </ScrollFadeIn>
       <section
-        className={`${gridBase} col-[1_/_span_12] row-[1_/_-1] relative w-full overflow-hidden h-[61.6875rem] pt-[4.875rem] pb-[9.375rem]`}
+        className={`${gridBase} col-[1_/_span_12] row-[1_/_-1] relative w-full overflow-hidden h-[61.6875rem] max-2xl:h-[46rem] pt-[4.875rem] pb-[9.375rem] max-2xl:pb-[6rem]`}
       >
 
         {/* Image BG */}
@@ -70,23 +70,33 @@ export function DeliverySection() {
             >
               <p className="leading-[1.14] mb-[0.25rem]">
                 <strong className="font-bold">Reserve agora sua chopeira</strong>
-                {" "}e garanta o sabor inigualável
+                {" "}e garanta o sabor inigualável do melhor chope do Rio na sua festa.
               </p>
-              <p className="leading-[1.14]">do melhor chope do Rio na sua festa.</p>
+              <p className="leading-[1.14]"></p>
             </div>
           </ScrollFadeIn>
 
           <ScrollFadeIn className="flex items-center gap-[0.875rem]">
-            <Button variant="whatsapp-yellow">
+            <ButtonLink
+              variant="whatsapp-yellow"
+              href="https://api.whatsapp.com/send?phone=+5521996533939&text=Gostaria+de+saber+mais+informa%C3%A7%C3%B5es!"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <WhatsAppAnimIcon fill="black" />
               Peça Agora!
-            </Button>
-            <Button variant="whatsapp-dark">
+            </ButtonLink>
+            <ButtonLink
+              variant="whatsapp-dark"
+              href="https://api.whatsapp.com/send?phone=+5521996533939&text=Gostaria+de+saber+mais+informa%C3%A7%C3%B5es!"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <WhatsAppAnimIcon fill="#FFBD24" />
               Peça Agora!
-            </Button>
+            </ButtonLink>
             {/* Play button */}
-            <div className="z-[1] ml-[2rem]">
+            <div className="z-[1] ml-[2rem] max-2xl:ml-[1rem]">
               <PlayButton size={84} borderColor="#ffbd24">
                 <svg width="40" height="40" viewBox="0 0 54 54" fill="none">
                   <path d="M19 14L39 27L19 40V14Z" fill="#FFBD24" stroke="#FFBD24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

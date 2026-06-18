@@ -266,7 +266,11 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
           ease: "power3.inOut",
         },
         "-=0.05"
-      );
+      )
+      // Dispara o evento de "quase completado" antes do final da animação.
+      // Você pode alterar esse tempo mudando o "-=0.2" (que significa 0.2 segundos antes do final).
+      // Se quiser que inicie 0.5s antes, coloque "-=0.5".
+      .add(() => window.dispatchEvent(new Event("preloaderAlmostComplete")), "-=0.4");
   }, [isExiting, onComplete]);
 
   useEffect(() => {
@@ -326,7 +330,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
             ref={logoRef}
             src={imgLogoBlack}
             alt="Nosso Chope"
-            className="w-24 h-auto sm:w-32 md:w-36 object-contain"
+            className="w-32 h-auto sm:w-44 md:w-52 object-contain"
             style={{
               filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.08))",
             }}
